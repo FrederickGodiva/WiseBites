@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".onBoarding2Activity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="353dp"
+        android:layout_height="273dp"
+        android:src="@drawable/logo_2"
+        android:layout_marginTop="58sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logo"
+        style="@style/AppName.50sp"
+        android:layout_marginTop="50sp"
+        app:layout_constraintTop_toTopOf="@id/background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="249sp"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_description"
+        style="@style/onboardingDescription"
+        android:layout_marginStart="9sp"
+        app:layout_constraintTop_toBottomOf="@id/app_name"
+        app:layout_constraintStart_toStartOf="@id/app_name"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/getStartedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/getStartedBtn"
+        style="@style/btn1"
+        app:icon="@drawable/next_arrow"
+        app:iconPadding="23dp"
+        android:layout_marginTop="28sp"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintStart_toStartOf="@id/description"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
