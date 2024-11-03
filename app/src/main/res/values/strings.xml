@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WiseBites</string>
+    <string name="onBoarding4_title">Discover the perfect recipes with the ingredients you already have!</string>
+    <string name="signUpWithEmail">Sign up with email</string>
+    <string name="orUse">or use</string>
+    <string name="signUpWithGoogle">Sign up with Google</string>
+    <string name="alreadyHaveAnAcc">Already have an account?</string>
+    <string name="signIn">Sign In</string>
+    <string name="skip">Skip</string>
 </resources>

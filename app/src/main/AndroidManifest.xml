@@ -13,6 +13,9 @@
         android:theme="@style/Theme.WiseBites"
         tools:targetApi="31">
         <activity
+            android:name=".OnBoarding3"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
