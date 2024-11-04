@@ -10,4 +10,8 @@
     <string name="login">Login</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+    <string name="logo">WISEBITES</string>
+    <string name="skip">Skip</string>
+    <string name="onboarding_description">Find food recipes with your ingredients and create your cooking list.</string>
+    <string name="getStartedBtn">Getting Started</string>
 </resources>
