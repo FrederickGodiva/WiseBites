@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".onBoarding2Activity">
+    tools:context=".OnBoarding2Activity">
 
     <ImageView
         android:id="@+id/logo"
