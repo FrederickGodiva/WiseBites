@@ -31,5 +31,10 @@
         <item name="android:textColor">@color/primary</item>
     </style>
 
+    <style name="forgetPassword">
+        <item name="android:textColor"></item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="Theme.WiseBites" parent="Base.Theme.WiseBites" />
 </resources>
