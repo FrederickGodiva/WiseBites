@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:background="@color/primary">
+
+    <ImageView
+        android:id="@+id/profile_page"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="383dp"
+        android:src="@drawable/profile"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_putih"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="357dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/page_white"
+        />
+
+    <ImageView
+        android:id="@+id/lisa_photo_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:src="@drawable/ic_nigga"
+        android:layout_marginTop="404dp"/>
+
+    <TextView
+        android:id="@+id/username_lisa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lisa_photo_profile"
+        android:layout_marginTop="15dp"
+        android:text="@string/username"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/email_lisa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/username_lisa"
+        android:layout_marginTop="-10dp"
+        android:text="@string/email"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="11sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_editProfile"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/email_lisa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/primary"
+        android:layout_marginTop="15dp"
+        app:cornerRadius="10dp"
+        android:text="@string/btn_editProfile"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_logOut"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_editProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/gray"
+        android:textColor="@color/primary"
+        android:layout_marginTop="15dp"
+        app:cornerRadius="10dp"
+        android:text="@string/btn_logOut"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

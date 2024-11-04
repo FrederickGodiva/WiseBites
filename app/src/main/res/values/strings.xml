@@ -10,4 +10,12 @@
     <string name="login">Login</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+
+
+
+    // Profile Page
+    <string name="username">Lisa Manoban</string>
+    <string name="email">lisamanoban@gmail.com</string>
+    <string name="btn_editProfile">Edit Profile</string>
+    <string name="btn_logOut">Log Out</string>
 </resources>
