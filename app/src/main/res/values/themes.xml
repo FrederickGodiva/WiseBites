@@ -32,7 +32,7 @@
     </style>
 
     <style name="forgetPassword">
-        <item name="android:textColor"></item>
+        <item name="android:textColor">#6A6A6A</item>
         <item name="android:textSize">12sp</item>
     </style>
 
