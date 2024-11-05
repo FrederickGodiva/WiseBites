@@ -116,38 +116,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/dotWrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/goSignInWrapper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:id="@+id/dot1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dot"
-            android:layout_marginEnd="5dp"/>
-
-        <ImageView
-            android:id="@+id/dot2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dot"
-            android:layout_marginEnd="5dp"/>
-
-        <ImageView
-            android:id="@+id/dot3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dot"
-            android:alpha="1"/>
-
-    </LinearLayout>
-
     <TextView
         android:id="@+id/skip"
         android:layout_width="wrap_content"

@@ -4,6 +4,41 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    
+    <style name="AppName">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">45sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppName.50sp">
+        <item name="android:textSize">50sp</item>
+    </style>
+
+    <style name="skipButton">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="onboardingDescription">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="btn1" parent="Widget.Material3.Button.ElevatedButton.Icon">
+        <item name="cornerRadius">10sp</item>
+        <item name="iconTint">@color/primary</item>
+        <item name="iconGravity">textEnd</item>
+        <item name="iconSize">13dp</item>
+        <item name="strokeColor">@color/grey</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
 
     <style name="welcomeBack">
         <item name="android:textSize">20sp</item>
@@ -31,7 +66,7 @@
     </style>
 
     <style name="forgetPassword">
-        <item name="android:textColor"></item>
+        <item name="android:textColor">#6A6A6A</item>
         <item name="android:textSize">12sp</item>
     </style>
 
