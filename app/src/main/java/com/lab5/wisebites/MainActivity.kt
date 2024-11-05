@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val layouts = listOf(
             R.layout.activity_on_boarding1,
             R.layout.activity_on_boarding2,
+            R.layout.activity_on_boarding3
         )
 
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
