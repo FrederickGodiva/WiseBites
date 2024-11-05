@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">WiseBites</string>
+    <string name="onBoarding4_title">Discover the perfect recipes with the ingredients you already have!</string>
+    <string name="signUpWithEmail">Sign up with email</string>
+    <string name="orUse">or use</string>
+    <string name="signUpWithGoogle">Sign up with Google</string>
+    <string name="alreadyHaveAnAcc">Already have an account?</string>
+    <string name="signIn">Sign In</string>
+    <string name="skip">Skip</string>
     <string name="ellips">Ellips</string>
     <string name="wisebites_logo">Wisebites Logo</string>
     <string name="welcome_back_to_wisebites">Welcome back to Wisebites</string>
@@ -11,7 +18,6 @@
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
     <string name="logo">WISEBITES</string>
-    <string name="skip">Skip</string>
     <string name="onboarding_description">Find food recipes with your ingredients and create your cooking list.</string>
     <string name="getStartedBtn">Getting Started</string>
 </resources>

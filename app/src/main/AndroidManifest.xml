@@ -19,6 +19,9 @@
             android:name=".OnBoarding2Activity"
             android:exported="false" />
         <activity
+            android:name=".OnBoarding3"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -29,7 +32,7 @@
         </activity>
         <activity
             android:name=".OnBoarding4"
-            android:exported="true" />
+            android:exported="true"/>
     </application>
 
 </manifest>

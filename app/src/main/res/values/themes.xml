@@ -2,7 +2,6 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.WiseBites" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="fontFamily">@font/poppins_semibold</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
     
