@@ -116,17 +116,4 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:text="@string/skip"
-        android:fontFamily="@font/poppins_semibold"
-        android:textSize="15sp"
-        android:textColor="@color/primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/goSignInWrapper"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

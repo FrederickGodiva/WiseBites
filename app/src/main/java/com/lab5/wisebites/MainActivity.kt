@@ -1,14 +1,16 @@
 package com.lab5.wisebites
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.lab5.wisebites.adapter.OnBoardingAdapter
 import com.lab5.wisebites.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnBoardingAdapter.SkipClickListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
-        viewPager.adapter = OnBoardingAdapter(layouts)
+        viewPager.adapter = OnBoardingAdapter(layouts, this)
 
         // Initialize the dots and background color
         updateDots(0)
@@ -38,12 +40,12 @@ class MainActivity : AppCompatActivity() {
                 updateDots(position)
             }
         })
+    }
 
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
+    override fun onSkipClicked() {
+        Log.d("MainActivity", "Skip button pressed - navigating to last page")
+        // Set ViewPager to the last page
+        binding.viewPager.currentItem = 2
     }
 
     private fun updateDots(position: Int) {

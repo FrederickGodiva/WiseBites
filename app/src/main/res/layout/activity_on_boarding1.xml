@@ -50,6 +50,8 @@
         android:layout_height="wrap_content"
         android:text="@string/skip"
         style="@style/skipButton"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_marginBottom="28sp"
         android:layout_marginEnd="33sp"
         app:layout_constraintEnd_toEndOf="parent"
