@@ -1,9 +1,7 @@
 package com.lab5.wisebites
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -42,8 +40,7 @@ class MainActivity : AppCompatActivity(), OnBoardingAdapter.SkipClickListener {
         })
     }
 
-    override fun onSkipClicked() {
-        Log.d("MainActivity", "Skip button pressed - navigating to last page")
+    override fun onClicked() {
         // Set ViewPager to the last page
         binding.viewPager.currentItem = 2
     }

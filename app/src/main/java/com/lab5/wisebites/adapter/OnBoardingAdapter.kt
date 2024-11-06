@@ -1,19 +1,23 @@
 package com.lab5.wisebites.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.lab5.wisebites.R
 
 class OnBoardingAdapter (
     private val layouts: List<Int>,
-    private val skipClickListener: SkipClickListener
+    private val skipClickListener: SkipClickListener,
 ): RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
     interface SkipClickListener {
-        fun onSkipClicked()
+        fun onClicked()
+    }
+
+    interface GetStartedClickListener {
+        fun onClicked()
     }
 
     inner class OnBoardingViewHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -30,9 +34,12 @@ class OnBoardingAdapter (
                 isClickable = true
                 isFocusable = true
                 setOnClickListener {
-                    Log.d("OnBoardingAdapter", "Skip button clicked")
-                    skipClickListener.onSkipClicked()
+                    skipClickListener.onClicked()
                 }
+            }
+        } else if (position == 1) {
+            holder.itemView.findViewById<MaterialButton>(R.id.getStartedButton)?.setOnClickListener{
+                skipClickListener.onClicked()
             }
         }
     }
