@@ -57,18 +57,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/email_address"
+            style="@style/email"
             android:background="@drawable/input_border"
             android:inputType="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_in"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="33dp"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/password"
+            style="@style/password"
             android:background="@drawable/input_border"
             android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@id/et_email"
@@ -113,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/don_t_have_an_account"
-                android:textSize="12sp" />
+                style="@style/dontHaveAccount" />
 
             <TextView
                 android:id="@+id/tv_sign_up"

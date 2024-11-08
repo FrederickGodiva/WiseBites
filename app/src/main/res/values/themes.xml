@@ -2,36 +2,54 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.WiseBites" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="fontFamily">@font/poppins_semibold</item>
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="welcomeBack">
+        <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_margin">23dp</item>
     </style>
 
     <style name="signIn">
+        <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="email">
+        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:layout_margin">33dp</item>
+    </style>
+
+    <style name="password">
+        <item name="android:fontFamily">@font/poppins_light</item>
     </style>
 
     <style name="loginBtn">
+        <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:background">@drawable/login_btn</item>
         <item name="android:padding">12dp</item>
     </style>
 
+    <style name="dontHaveAccount">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="signUp">
+        <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primary</item>
     </style>
 
     <style name="forgetPassword">
+        <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">#6A6A6A</item>
         <item name="android:textSize">12sp</item>
     </style>
