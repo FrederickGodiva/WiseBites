@@ -32,4 +32,7 @@
     <string name="select_ingredients_subtext">Choose 1 to 3 ingredients to discover new cooking ideas</string>
     <string name="choose_popular_recipe">Choose from popular recipe</string>
     <string name="sortBtn">Sort By</string>
+    <string name="recipe_name">Lamb Tzatziki Burgers</string>
+    <string name="recipe_tag">Beef</string>
+    <string name="recipe_style">American</string>
 </resources>
