@@ -24,4 +24,10 @@
     <string name="Search">Search</string>
     <string name="Bookmark">Bookmark</string>
     <string name="Profile">Profile</string>
+    <string name="ellipse">Ellipse</string>
+    <string name="hello">Hello</string>
+    <string name="let_s_create_your_account">Let\'s create your account</string>
+    <string name="username">username</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
 </resources>

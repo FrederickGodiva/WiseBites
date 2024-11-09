@@ -13,6 +13,9 @@
         android:theme="@style/Theme.WiseBites"
         tools:targetApi="31">
         <activity
+            android:name=".OnBoarding5"
+            android:exported="false" />
+        <activity
             android:name=".OnBoarding1Activity"
             android:exported="false" />
         <activity
@@ -32,7 +35,7 @@
         </activity>
         <activity
             android:name=".OnBoarding4"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
