@@ -35,4 +35,10 @@
     <string name="recipe_name">Lamb Tzatziki Burgers</string>
     <string name="recipe_tag">Beef</string>
     <string name="recipe_style">American</string>
+    <string name="rb_recipe_atoz">Recipe: A to Z</string>
+    <string name="rb_recipe_ztoa">Recipe: Z to A</string>
+    <string name="rb_cat_atoz">Category: A to Z</string>
+    <string name="rb_cat_ztoa">Category: Z to A</string>
+    <string name="rb_area_atoz">Area: A to Z</string>
+    <string name="rb_area_ztoa">Area: Z to A</string>
 </resources>

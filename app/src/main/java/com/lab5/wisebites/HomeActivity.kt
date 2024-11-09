@@ -16,5 +16,9 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnSort.setOnClickListener() {
+            val sortModalBottomSheet = SortModalBottomSheetDialog()
+            sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
+        }
     }
 }
