@@ -58,24 +58,30 @@
             android:layout_height="wrap_content"
             android:hint="@string/email_address"
             style="@style/email"
-            android:background="@drawable/input_border"
             android:inputType="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_in"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            style="@style/password"
-            android:background="@drawable/input_border"
-            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@id/et_email"
             app:layout_constraintStart_toStartOf="@id/et_email"
             app:layout_constraintEnd_toEndOf="@id/et_email"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginTop="18dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                style="@style/password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_forgot_password"
@@ -83,7 +89,7 @@
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
             style="@style/forgetPassword"
-            app:layout_constraintTop_toBottomOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/til_password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="36dp"/>
@@ -98,8 +104,8 @@
             android:background="@drawable/login_btn"
             app:backgroundTint="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/tv_forgot_password"
-            app:layout_constraintStart_toStartOf="@+id/et_password"
-            app:layout_constraintEnd_toEndOf="@+id/et_password"
+            app:layout_constraintStart_toStartOf="@+id/til_password"
+            app:layout_constraintEnd_toEndOf="@+id/til_password"
             android:layout_marginTop="36dp" />
 
         <LinearLayout
