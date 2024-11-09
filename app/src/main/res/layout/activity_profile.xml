@@ -82,9 +82,6 @@
         app:cornerRadius="10dp"
         android:text="@string/btn_logOut"/>
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
