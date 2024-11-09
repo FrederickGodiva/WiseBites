@@ -55,12 +55,18 @@
     </style>
 
     <style name="email">
+        <item name="android:textSize">14sp</item>
+        <item name="android:color">@color/gray</item>
         <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:background">@drawable/input_border</item>
         <item name="android:layout_margin">33dp</item>
     </style>
 
     <style name="password">
+        <item name="android:textSize">14sp</item>
+        <item name="android:color">@color/gray</item>
         <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:background">@drawable/input_border</item>
     </style>
 
     <style name="loginBtn">
