@@ -153,6 +153,7 @@
         android:background="@drawable/bottom_nav_bg"
         app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/nav_item_color_selector"
+        app:itemActiveIndicatorStyle="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
