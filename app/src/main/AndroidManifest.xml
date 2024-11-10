@@ -24,6 +24,9 @@
             android:name=".HomeActivity"
             android:exported="true"/>
         <activity
+            android:name=".SearchActivity"
+            android:exported="true" />
+        <activity
             android:name=".OnBoarding1Activity"
             android:exported="false" />
         <activity
