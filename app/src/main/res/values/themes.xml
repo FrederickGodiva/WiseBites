@@ -153,5 +153,13 @@
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="tabs">
+        <item name="tabTextColor">@color/black</item>
+        <item name="tabIndicatorColor">@color/primary</item>
+        <item name="tabMode"> scrollable</item>
+        <item name="tabRippleColor">@color/primary</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <style name="Theme.WiseBites" parent="Base.Theme.WiseBites" />
 </resources>

@@ -44,4 +44,29 @@
     <string name="seacrh_heading">Our Suggestion</string>
     <string name="bookmark_heading">Here are Your Bookmarks.</string>
     <string name="search_bookmark_placeholder">Search your bookmark</string>
+
+    <string name="recipe_tab_details">Details</string>
+    <string name="recipe_tab_ingredients">Ingredients</string>
+    <string name="recipe_tab_direction">Direction</string>
+
+    <string name="details_tab_content">Salad is a healthy and refreshing meal that is rich in
+        vitamins, minerals, and fiber. It is also low in calories and fat, making it a great
+        choice for a healthy diet.</string>
+    <string name="ingredients_tab_content">
+        • Beras 5kg\n
+        • Air bersih\n
+        • Ayam bagian paha\n
+        • Bawang Goreng\n
+        • Timun dan Tomat\n
+        • Kecap Asin
+    </string>
+    <string name="direction_tab_content">
+            1. Masukkan air bersih ke dalam panci dan masak air hingga mendidih.\n
+            2. Siapkan beras yang sudah dicuci kemudian, campurkan ke dalam air mendidih tadi.\n
+            3. Aduk secara berkala panci berisi air dan beras tadi sehingga menjadi bubur.\n
+            4. Rebus ayam ke dalam panci berbeda sampai warnanya keputihan.\n
+            5. Kemudian ayam disuwir kecil-kecil.\n
+            6. Cuci topping lain seperti tomat, timun, dan sayuran lainnya.\n
+            7. Sajikan bubur ke dalam sebuah piring bersih.\n
+    </string>
 </resources>

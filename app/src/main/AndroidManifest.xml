@@ -22,12 +22,15 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".SearchActivity"
             android:exported="true" />
         <activity
             android:name=".BookmarkActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecipeActivity"
             android:exported="true" />
         <activity
             android:name=".OnBoarding1Activity"
