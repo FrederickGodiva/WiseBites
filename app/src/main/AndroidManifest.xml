@@ -13,6 +13,17 @@
         android:theme="@style/Theme.WiseBites"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true"/>
+        <activity
             android:name=".OnBoarding1Activity"
             android:exported="false" />
         <activity
@@ -22,17 +33,8 @@
             android:name=".OnBoarding3"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".OnBoarding4"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
