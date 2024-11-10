@@ -105,6 +105,10 @@
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="greetings.white">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="greetings.medium">
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
@@ -118,6 +122,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/secondary</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="homeHeading.white">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="homeSubHeading">

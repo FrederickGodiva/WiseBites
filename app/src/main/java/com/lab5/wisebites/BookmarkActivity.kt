@@ -4,21 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.lab5.wisebites.databinding.ActivitySearchBinding
+import com.lab5.wisebites.databinding.ActivityBookmarkBinding
 
-class SearchActivity : AppCompatActivity() {
+class BookmarkActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySearchBinding
+    private lateinit var binding: ActivityBookmarkBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivitySearchBinding.inflate(layoutInflater)
+        binding = ActivityBookmarkBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnSort.setOnClickListener {
+            val sortModalBottomSheet = SortModalBottomSheetDialog()
+            sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
+        }
+
         // Set the default selected item in Navigation Menu
-        binding.bnMenu.selectedItemId = R.id.i_search
+        binding.bnMenu.selectedItemId = R.id.i_bookmark
 
         // Items Selection Handler
         binding.bnMenu.setOnItemSelectedListener { item ->

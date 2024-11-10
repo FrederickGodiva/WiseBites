@@ -41,7 +41,9 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.i_bookmark -> {
-                    // startActivity(Intent(this, BookmarkActivity::class.java))
+                    intent = Intent(this, BookmarkActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                     true
                 }
                 R.id.i_profile -> {
