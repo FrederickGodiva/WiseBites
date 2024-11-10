@@ -54,4 +54,10 @@ class BookmarkActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        // Set the default selected item in Navigation Menu
+        binding.bnMenu.selectedItemId = R.id.i_bookmark
+    }
 }
