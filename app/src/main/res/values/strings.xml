@@ -1,12 +1,5 @@
 <resources>
     <string name="app_name">WiseBites</string>
-    <string name="onBoarding4_title">Discover the perfect recipes with the ingredients you already have!</string>
-    <string name="signUpWithEmail">Sign up with email</string>
-    <string name="orUse">or use</string>
-    <string name="signUpWithGoogle">Sign up with Google</string>
-    <string name="alreadyHaveAnAcc">Already have an account?</string>
-    <string name="signIn">Sign In</string>
-    <string name="skip">Skip</string>
     <string name="ellips">Ellips</string>
     <string name="wisebites_logo">Wisebites Logo</string>
     <string name="welcome_back_to_wisebites">Welcome back to Wisebites</string>
@@ -17,28 +10,4 @@
     <string name="login">Login</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
-    <string name="logo">WISEBITES</string>
-    <string name="onboarding_description">Find food recipes with your ingredients and create your cooking list.</string>
-    <string name="getStartedBtn">Getting Started</string>
-    <string name="Home">Home</string>
-    <string name="Search">Search</string>
-    <string name="Bookmark">Bookmark</string>
-    <string name="Profile">Profile</string>
-    <string name="greetings">Hello,</string>
-    <string name="Home_heading">What do you want to cook Today?</string>
-    <string name="search_placeholder">Search recipes</string>
-    <string name="choose_ingredients">Choose your\'s ingredients</string>
-    <string name="select_ingredients">Select ingredients</string>
-    <string name="select_ingredients_subtext">Choose 1 to 3 ingredients to discover new cooking ideas</string>
-    <string name="choose_popular_recipe">Choose from popular recipe</string>
-    <string name="sortBtn">Sort By</string>
-    <string name="recipe_name">Lamb Tzatziki Burgers</string>
-    <string name="recipe_tag">Beef</string>
-    <string name="recipe_style">American</string>
-    <string name="rb_recipe_atoz">Recipe: A to Z</string>
-    <string name="rb_recipe_ztoa">Recipe: Z to A</string>
-    <string name="rb_cat_atoz">Category: A to Z</string>
-    <string name="rb_cat_ztoa">Category: Z to A</string>
-    <string name="rb_area_atoz">Area: A to Z</string>
-    <string name="rb_area_ztoa">Area: Z to A</string>
 </resources>
