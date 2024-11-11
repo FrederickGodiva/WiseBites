@@ -1,13 +1,14 @@
 package com.lab5.wisebites
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.viewpager2.widget.ViewPager2
+import com.lab5.wisebites.adapter.OnBoardingAdapter
 import com.lab5.wisebites.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnBoardingAdapter.SkipClickListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -18,10 +19,39 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        val layouts = listOf(
+            R.layout.activity_on_boarding1,
+            R.layout.activity_on_boarding2,
+            R.layout.activity_on_boarding3
+        )
+
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+        viewPager.adapter = OnBoardingAdapter(layouts, this)
+
+        // Initialize the dots and background color
+        updateDots(0)
+
+        // Set up page change callback to update dot icons
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                updateDots(position)
+            }
+        })
+    }
+
+    override fun onClicked() {
+        // Set ViewPager to the last page
+        binding.viewPager.currentItem = 2
+    }
+
+    private fun updateDots(position: Int) {
+        val dot1 = findViewById<ImageButton>(R.id.dot_1)
+        val dot2 = findViewById<ImageButton>(R.id.dot_2)
+        val dot3 = findViewById<ImageButton>(R.id.dot_3)
+
+        dot1.setBackgroundResource(if (position == 0) R.drawable.dot_white else R.drawable.dot)
+        dot2.setBackgroundResource(if (position == 1) R.drawable.dot_red else R.drawable.dot)
+        dot3.setBackgroundResource(if (position == 2) R.drawable.dot_red else R.drawable.dot)
     }
 }

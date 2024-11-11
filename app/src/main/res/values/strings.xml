@@ -10,21 +10,4 @@
     <string name="login">Login</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
-
-
-    // Profile Page
-    <string name="username">Lisa Manoban</string>
-    <string name="email">lisamanoban@gmail.com</string>
-    <string name="btn_editProfile">Edit Profile</string>
-    <string name="btn_logOut">Log Out</string>
-    <string name="edit_photoProfile">edit your profile picture</string>
-    <string name="profile_password">Admin123</string>
-    <string name="new_password">Gacor123</string>
-    <string name="name_textInput">Name</string>
-    <string name="email_textInput">Email</string>
-    <string name="oldPassword_textInput">Old Password</string>
-    <string name="newPassword_textInput">New Password</string>
-    <string name="confirmPassword_textInput">Confirm Password</string>
-    <string name="btn_saveChanges">Save Changes</string>
-    <string name="btn_cancelChanges">Cancel</string>
 </resources>
