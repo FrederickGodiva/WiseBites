@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="43dp">
+
+    <ImageView
+        android:id="@+id/iv_sort_decor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sort_decoration"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="32dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp" />
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_sort_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/skipButton"
+        android:text="@string/sortBtn"
+        android:layout_marginTop="-4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal" />
+
+    <ImageView
+        android:id="@+id/iv_recipe_atoz"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_sort_by_recipe"
+        android:layout_marginTop="36dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_close"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_recipe_atoz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rb_recipe_atoz"
+        style="@style/radioBtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/iv_recipe_atoz"
+        app:layout_constraintBottom_toBottomOf="@id/iv_recipe_atoz"
+        app:layout_constraintStart_toEndOf="@id/iv_recipe_atoz" />
+
+    <RadioButton
+        android:id="@+id/rb_recipe_atoz"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:drawableEnd="@drawable/custom_radio_button"
+        android:button="@null"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/tv_recipe_atoz"
+        app:layout_constraintBottom_toBottomOf="@id/tv_recipe_atoz"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_recipe_ztoa"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_sort_by_recipe"
+        android:layout_marginTop="27dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_recipe_atoz"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_recipe_ztoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rb_recipe_ztoa"
+        style="@style/radioBtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/iv_recipe_ztoa"
+        app:layout_constraintBottom_toBottomOf="@id/iv_recipe_ztoa"
+        app:layout_constraintStart_toEndOf="@id/iv_recipe_ztoa" />
+
+    <RadioButton
+        android:id="@+id/rb_recipe_ztoa"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:drawableEnd="@drawable/custom_radio_button"
+        android:button="@null"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/tv_recipe_ztoa"
+        app:layout_constraintBottom_toBottomOf="@id/tv_recipe_ztoa"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_category_atoz"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_sort_by_category"
+        android:layout_marginTop="27dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_recipe_ztoa"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_category_atoz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rb_cat_atoz"
+        style="@style/radioBtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/iv_category_atoz"
+        app:layout_constraintBottom_toBottomOf="@id/iv_category_atoz"
+        app:layout_constraintStart_toEndOf="@id/iv_category_atoz" />
+
+    <RadioButton
+        android:id="@+id/rb_category_atoz"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:drawableEnd="@drawable/custom_radio_button"
+        android:button="@null"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/tv_category_atoz"
+        app:layout_constraintBottom_toBottomOf="@id/tv_category_atoz"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_category_ztoa"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_sort_by_category"
+        android:layout_marginTop="27dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_atoz"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_category_ztoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rb_cat_ztoa"
+        style="@style/radioBtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/iv_category_ztoa"
+        app:layout_constraintBottom_toBottomOf="@id/iv_category_ztoa"
+        app:layout_constraintStart_toEndOf="@id/iv_category_ztoa" />
+
+    <RadioButton
+        android:id="@+id/rb_category_ztoa"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:drawableEnd="@drawable/custom_radio_button"
+        android:button="@null"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/tv_category_ztoa"
+        app:layout_constraintBottom_toBottomOf="@id/tv_category_ztoa"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_area_atoz"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_sort_by_area"
+        android:layout_marginTop="27dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_ztoa"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_area_atoz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rb_area_atoz"
+        style="@style/radioBtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/iv_area_atoz"
+        app:layout_constraintBottom_toBottomOf="@id/iv_area_atoz"
+        app:layout_constraintStart_toEndOf="@id/iv_area_atoz" />
+
+    <RadioButton
+        android:id="@+id/rb_area_atoz"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:drawableEnd="@drawable/custom_radio_button"
+        android:button="@null"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/tv_area_atoz"
+        app:layout_constraintBottom_toBottomOf="@id/tv_area_atoz"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_area_ztoa"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_sort_by_area"
+        android:layout_marginTop="27dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_area_atoz"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_area_ztoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rb_area_ztoa"
+        style="@style/radioBtn"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/iv_area_ztoa"
+        app:layout_constraintBottom_toBottomOf="@id/iv_area_ztoa"
+        app:layout_constraintStart_toEndOf="@id/iv_area_ztoa" />
+
+    <RadioButton
+        android:id="@+id/rb_area_ztoa"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:drawableEnd="@drawable/custom_radio_button"
+        android:button="@null"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/tv_area_ztoa"
+        app:layout_constraintBottom_toBottomOf="@id/tv_area_ztoa"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
