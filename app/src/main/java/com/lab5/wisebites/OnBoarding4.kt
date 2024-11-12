@@ -1,5 +1,6 @@
 package com.lab5.wisebites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,5 +16,10 @@ class OnBoarding4 : AppCompatActivity() {
 
         binding = ActivityOnBoarding4Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.tvSignUp.setOnClickListener {
+            val intent = Intent(this, OnBoarding5::class.java)
+            startActivity(intent)
+        }
     }
 }

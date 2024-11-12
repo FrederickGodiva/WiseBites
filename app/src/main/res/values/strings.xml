@@ -30,4 +30,8 @@
     <string name="username">username</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in">Sign In</string>
+    <string name="email">email</string>
+    <string name="there">There!</string>
+    <string name="create_password">create password</string>
+    <string name="confirm_password">confirm password</string>
 </resources>

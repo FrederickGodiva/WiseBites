@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="74dp"/>
+            android:layout_marginTop="123dp"/>
 
         <LinearLayout
             android:id="@+id/linear_hello_there"
@@ -41,21 +41,18 @@
             android:layout_marginTop="21dp">
 
             <TextView
+                android:id="@+id/tv_hello_there"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hello"
-                android:textColor="@color/primary"
-                android:textSize="20sp"
-                android:fontFamily="@font/poppins_semibold" />
+                style="@style/signUp.hello"/>
 
             <TextView
+                android:id="@+id/tv_there"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="There!"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginStart="4dp"
-                android:fontFamily="@font/poppins_semibold" />
+                android:text="@string/there"
+                style="@style/signUp.there" />
 
         </LinearLayout>
 
@@ -64,57 +61,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/let_s_create_your_account"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"
+            style="@style/signUpCreateAccount"
             app:layout_constraintTop_toBottomOf="@+id/linear_hello_there"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="75dp"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/username"
-            android:background="@drawable/input_border"
-            android:inputType="text"
+            style="@style/signUpUsername"
+            android:elevation="100dp"
             app:layout_constraintTop_toBottomOf="@+id/tv_lets_create_your_account"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginVertical="18dp"
-            android:layout_marginHorizontal="32dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_email"
+            android:id="@+id/tiet_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/email_address"
-            android:background="@drawable/input_border"
-            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            style="@style/signUpEmail"
             app:layout_constraintTop_toBottomOf="@+id/tiet_username"
             app:layout_constraintStart_toStartOf="@+id/tiet_username"
-            app:layout_constraintEnd_toEndOf="@+id/tiet_username"
-            android:layout_marginTop="18dp"/>
+            app:layout_constraintEnd_toEndOf="@+id/tiet_username" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/et_email"
-            app:layout_constraintStart_toStartOf="@id/et_email"
-            app:layout_constraintEnd_toEndOf="@id/et_email"
+            app:layout_constraintTop_toBottomOf="@id/tiet_email"
+            app:layout_constraintStart_toStartOf="@id/tiet_email"
+            app:layout_constraintEnd_toEndOf="@id/tiet_email"
             android:layout_marginTop="18dp"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            style="@style/passwordHint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_create_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/create_password"
-                style="@style/password"
-                android:background="@drawable/input_border"
-                android:inputType="textPassword"
-                />
+                style="@style/signUpPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,61 +111,59 @@
             android:id="@+id/til_confirm_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/til_password"
-            app:layout_constraintStart_toStartOf="@id/til_password"
-            app:layout_constraintEnd_toEndOf="@id/til_password"
+            app:layout_constraintTop_toBottomOf="@+id/til_password"
+            app:layout_constraintStart_toStartOf="@+id/til_password"
+            app:layout_constraintEnd_toEndOf="@+id/til_password"
             android:layout_marginTop="18dp"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            style="@style/passwordHint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/confirm_password"
-                style="@style/password"
-                android:background="@drawable/input_border"
-                android:inputType="textPassword" />
+                style="@style/signUpPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
-            style="@style/loginBtn"
+            android:text="@string/sign_up"
+            style="@style/signUpButton"
             app:backgroundTintMode="src_over"
             android:background="@drawable/login_btn"
             app:backgroundTint="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/til_confirm_password"
             app:layout_constraintStart_toStartOf="@+id/til_confirm_password"
             app:layout_constraintEnd_toEndOf="@+id/til_confirm_password"
-            android:layout_marginTop="36dp" />
+            android:layout_marginTop="40dp" />
 
         <LinearLayout
-            android:id="@+id/linear_sign_up"
+            android:id="@+id/linear_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            app:layout_constraintTop_toBottomOf="@id/btn_signup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp">
 
             <TextView
-                android:id="@+id/tv_dont_have_an_account"
+                android:id="@+id/tv_already_have_an_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/already_have_an_account"
-                style="@style/dontHaveAccount" />
+                style="@style/signUpAlreadyHaveAccount"/>
 
             <TextView
-                android:id="@+id/tv_sign_up"
+                android:id="@+id/tv_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in"
-                style="@style/signUp"
-                android:layout_marginStart="4dp" />
+                style="@style/signUpSignIn"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
