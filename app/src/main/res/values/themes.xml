@@ -45,20 +45,20 @@
         <!--<item name="colorPrimary">@color/primary</item>-->
     </style>
 
-    <style name="welcomeBack">
+    <style name="signInWelcomeBack">
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_margin">23dp</item>
     </style>
 
-    <style name="signIn">
+    <style name="signInText">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="email">
+    <style name="signInEmail">
         <item name="android:color">@color/gray</item>
         <item name="android:fontFamily">@font/poppins_light</item>
         <item name="android:background">@drawable/input_border</item>
@@ -67,36 +67,114 @@
         <item name="android:paddingVertical">14dp</item>
     </style>
 
-    <style name="password">
-        <item name="android:color">@color/gray</item>
+    <style name="signInPassword">
         <item name="android:fontFamily">@font/poppins_light</item>
         <item name="android:background">@drawable/input_border</item>
     </style>
 
-    <style name="loginBtn">
+    <style name="passwordHint" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:color">@color/gray</item>
+        <item name="android:fontFamily">@font/poppins_light</item>
+    </style>
+
+    <style name="signInForgetPassword">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="signInLoginBtn">
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:padding">12dp</item>
+        <item name="android:paddingVertical">6dp</item>
+        <item name="android:paddingHorizontal">122dp</item>
     </style>
 
-    <style name="dontHaveAccount">
+    <style name="signInDontHaveAccount">
         <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="signUp">
+    <style name="signInSignUp">
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primary</item>
     </style>
 
-    <style name="forgetPassword">
+    <style name="signUp">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="signUp.hello">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="signUp.there">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">4dp</item>
+    </style>
+
+    <style name="signUpCreateAccount">
         <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">75dp</item>
+    </style>
+
+    <style name="signUpUsername">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_light</item>
         <item name="android:textColor">@color/gray</item>
+        <item name="android:inputType">text</item>
+        <item name="android:background">@drawable/input_border</item>
+        <item name="android:paddingVertical">16dp</item>
+        <item name="android:paddingHorizontal">14dp</item>
+        <item name="android:layout_marginVertical">18dp</item>
+        <item name="android:layout_marginHorizontal">32dp</item>
+    </style>
+
+    <style name="signUpEmail">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:background">@drawable/input_border</item>
+        <item name="android:paddingVertical">16dp</item>
+        <item name="android:paddingHorizontal">14dp</item>
+        <item name="android:layout_marginTop">18dp</item>
+    </style>
+
+    <style name="signUpPassword">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:background">@drawable/input_border</item>
+    </style>
+
+    <style name="signUpButton">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingVertical">6dp</item>
+        <item name="android:paddingHorizontal">122dp</item>
+    </style>
+
+    <style name="signUpAlreadyHaveAccount">
         <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/tertiary</item>
+    </style>
+
+    <style name="signUpSignIn">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:layout_marginStart">4dp</item>
     </style>
 
     <style name="greetings">
@@ -116,13 +194,13 @@
     <style name="homeHeading">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textColor">@color/tertiary</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
     <style name="homeSubHeading">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textColor">@color/tertiary</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 

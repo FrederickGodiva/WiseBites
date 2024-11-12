@@ -188,7 +188,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="130dp"
-        android:layout_marginRight="24dp"/>
+        android:layout_marginEnd="24dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCancelChanges"
@@ -207,40 +207,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="130dp"
-        android:layout_marginLeft="24dp"/>
-
-
-
-
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/btn_editProfile"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/email_lisa"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:backgroundTint="@color/primary"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        app:cornerRadius="10dp"-->
-<!--        android:text="@string/btn_editProfile"/>-->
-
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/btn_logOut"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btn_editProfile"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:backgroundTint="@color/white"-->
-<!--        app:strokeWidth="1dp"-->
-<!--        app:strokeColor="@color/gray"-->
-<!--        android:textColor="@color/primary"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        app:cornerRadius="10dp"-->
-<!--        android:text="@string/btn_logOut"/>-->
-
-
-
-
+        android:layout_marginStart="24dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

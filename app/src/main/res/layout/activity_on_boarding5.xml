@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoarding5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_ellipse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ellipse_onboarding5"
+            android:contentDescription="@string/ellipse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_wisebites_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/wisebites_logo"
+            android:src="@drawable/wisebites_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="123dp"/>
+
+        <LinearLayout
+            android:id="@+id/linear_hello_there"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/iv_wisebites_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:id="@+id/tv_hello_there"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello"
+                style="@style/signUp.hello"/>
+
+            <TextView
+                android:id="@+id/tv_there"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/there"
+                style="@style/signUp.there" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_lets_create_your_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/let_s_create_your_account"
+            style="@style/signUpCreateAccount"
+            app:layout_constraintTop_toBottomOf="@+id/linear_hello_there"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            style="@style/signUpUsername"
+            android:elevation="100dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lets_create_your_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            style="@style/signUpEmail"
+            app:layout_constraintTop_toBottomOf="@+id/tiet_username"
+            app:layout_constraintStart_toStartOf="@+id/tiet_username"
+            app:layout_constraintEnd_toEndOf="@+id/tiet_username" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tiet_email"
+            app:layout_constraintStart_toStartOf="@id/tiet_email"
+            app:layout_constraintEnd_toEndOf="@id/tiet_email"
+            android:layout_marginTop="18dp"
+            app:passwordToggleEnabled="true"
+            style="@style/passwordHint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_create_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/create_password"
+                style="@style/signUpPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_confirm_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_password"
+            app:layout_constraintStart_toStartOf="@+id/til_password"
+            app:layout_constraintEnd_toEndOf="@+id/til_password"
+            android:layout_marginTop="18dp"
+            app:passwordToggleEnabled="true"
+            style="@style/passwordHint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm_password"
+                style="@style/signUpPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_signup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            style="@style/signUpButton"
+            app:backgroundTintMode="src_over"
+            android:background="@drawable/login_btn"
+            app:backgroundTint="@color/primary"
+            app:layout_constraintTop_toBottomOf="@id/til_confirm_password"
+            app:layout_constraintStart_toStartOf="@+id/til_confirm_password"
+            app:layout_constraintEnd_toEndOf="@+id/til_confirm_password"
+            android:layout_marginTop="40dp" />
+
+        <LinearLayout
+            android:id="@+id/linear_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/btn_signup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tv_already_have_an_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_have_an_account"
+                style="@style/signUpAlreadyHaveAccount"/>
+
+            <TextView
+                android:id="@+id/tv_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_in"
+                style="@style/signUpSignIn"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -83,8 +83,3 @@
         android:text="@string/btn_logOut"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
