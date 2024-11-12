@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome_back_to_wisebites"
-            style="@style/welcomeBack"
+            style="@style/signInWelcomeBack"
             app:layout_constraintTop_toBottomOf="@+id/iv_wisebites_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/let_s_sign_you_in"
-            style="@style/signIn"
+            style="@style/signInText"
             app:layout_constraintTop_toBottomOf="@+id/tv_welcome_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/email_address"
-            style="@style/email"
+            style="@style/signInEmail"
             android:inputType="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_in"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,14 +71,15 @@
             app:layout_constraintStart_toStartOf="@id/et_email"
             app:layout_constraintEnd_toEndOf="@id/et_email"
             android:layout_marginTop="18dp"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            style="@style/passwordHint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                style="@style/password"
+                style="@style/signInPassword"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -88,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
-            style="@style/forgetPassword"
+            style="@style/signInForgetPassword"
             app:layout_constraintTop_toBottomOf="@+id/til_password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/login"
-            style="@style/loginBtn"
+            style="@style/signInLoginBtn"
             app:backgroundTintMode="src_over"
             android:background="@drawable/login_btn"
             app:backgroundTint="@color/primary"
@@ -123,14 +124,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/don_t_have_an_account"
-                style="@style/dontHaveAccount" />
+                style="@style/signInDontHaveAccount" />
 
             <TextView
                 android:id="@+id/tv_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
-                style="@style/signUp"
+                style="@style/signInSignUp"
                 android:layout_marginStart="4dp" />
         </LinearLayout>
 

@@ -44,6 +44,9 @@
         <activity
             android:name=".OnBoarding4"
             android:exported="true" />
+        <activity
+            android:name=".OnBoarding5"
+            android:exported="false" />
     </application>
 
 </manifest>

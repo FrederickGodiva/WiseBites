@@ -24,6 +24,16 @@
     <string name="Search">Search</string>
     <string name="Bookmark">Bookmark</string>
     <string name="Profile">Profile</string>
+    <string name="ellipse">Ellipse</string>
+    <string name="hello">Hello</string>
+    <string name="let_s_create_your_account">Let\'s create your account</string>
+    <string name="username">username</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">email</string>
+    <string name="there">There!</string>
+    <string name="create_password">create password</string>
+    <string name="confirm_password">confirm password</string>
     <string name="greetings">Hello,</string>
     <string name="Home_heading">What do you want to cook Today?</string>
     <string name="search_placeholder">Search recipes</string>
@@ -69,4 +79,16 @@
             6. Cuci topping lain seperti tomat, timun, dan sayuran lainnya.\n
             7. Sajikan bubur ke dalam sebuah piring bersih.\n
     </string>
+    <string name="btn_logOut">Log Out</string>
+    <string name="btn_editProfile">Edit Profile</string>
+    <string name="edit_photoProfile">edit your profile picture</string>
+    <string name="name_textInput">Name</string>
+    <string name="email_textInput">Email</string>
+    <string name="oldPassword_textInput">Old Password</string>
+    <string name="profile_password">New Password</string>
+    <string name="newPassword_textInput">New Password</string>
+    <string name="confirmPassword_textInput">Confirm Password</string>
+    <string name="btn_saveChanges">Save Changes</string>
+    <string name="btn_cancelChanges">Cancel</string>
+    <string name="new_password">New Password</string>
 </resources>
