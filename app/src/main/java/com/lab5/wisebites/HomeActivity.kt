@@ -9,9 +9,8 @@ import com.lab5.wisebites.API.APIClient
 import com.lab5.wisebites.API.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivityHomeBinding
-import com.lab5.wisebites.model.Recipe
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.*
+import androidx.lifecycle.lifecycleScope
 
 class HomeActivity : AppCompatActivity() {
 
@@ -30,26 +29,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         // Logic Recycler View dari populer Recipes
-        val apiService = APIClient.instance.create(APIService::class.java)
-
-        apiService.getRandomRecipe().enqueue(object: Callback<Map<String, List<Recipe>>> {
-            override fun onResponse(
-                call: retrofit2.Call<Map<String, List<Recipe>>>,
-                response: Response<Map<String, List<Recipe>>>
-            ) {
-                if (response.isSuccessful) {
-                    val meals = response.body()?.get("meals")
-                    if (!meals.isNullOrEmpty()) {
-                        binding.rvPopularRecipes.adapter = response.body()?.let { RecipeAdapter(meals) }
-                    }
-                }
-            }
-
-            override fun onFailure(call: retrofit2.Call<Map<String, List<Recipe>>>, t: Throwable) {
-                // TODO: Need to make the error handling
-                Log.e("HomeActivity", "Error:${t.message}")
-            }
-        })
+        fetchMultipleRecipes()
 
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
@@ -89,5 +69,28 @@ class HomeActivity : AppCompatActivity() {
         super.onRestart()
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
+    }
+
+    private fun fetchMultipleRecipes() {
+        val apiService = APIClient.instance.create(APIService::class.java)
+
+        // Menggunakan Coroutine di `lifecycleScope`
+        lifecycleScope.launch {
+            try {
+                // Memanggil API 10 kali secara paralel
+                val recipesList = withContext(Dispatchers.IO) {
+                    (1..10).map {
+                        async { apiService.getRandomRecipe()["meals"]?.firstOrNull() }
+                    }.awaitAll()
+                }.filterNotNull()
+
+                // Menampilkan hasil ke RecyclerView
+                if (recipesList.isNotEmpty()) {
+                    binding.rvPopularRecipes.adapter = RecipeAdapter(recipesList)
+                }
+            } catch (e: Exception) {
+                Log.e("HomeActivity", "Error: ${e.message}")
+            }
+        }
     }
 }
