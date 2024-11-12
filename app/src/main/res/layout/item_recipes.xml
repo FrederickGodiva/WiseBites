@@ -24,6 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:src="@drawable/recipe"
+                android:scaleType="centerCrop"
                 tools:ignore="ContentDescription"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

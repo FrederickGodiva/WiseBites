@@ -2,9 +2,16 @@ package com.lab5.wisebites
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.lab5.wisebites.API.APIClient
+import com.lab5.wisebites.API.APIService
+import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivityHomeBinding
+import com.lab5.wisebites.model.Recipe
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeActivity : AppCompatActivity() {
 
@@ -22,9 +29,32 @@ class HomeActivity : AppCompatActivity() {
             sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
         }
 
+        // Logic Recycler View dari populer Recipes
+        val apiService = APIClient.instance.create(APIService::class.java)
+
+        apiService.getRandomRecipe().enqueue(object: Callback<Map<String, List<Recipe>>> {
+            override fun onResponse(
+                call: retrofit2.Call<Map<String, List<Recipe>>>,
+                response: Response<Map<String, List<Recipe>>>
+            ) {
+                if (response.isSuccessful) {
+                    val meals = response.body()?.get("meals")
+                    if (!meals.isNullOrEmpty()) {
+                        binding.rvPopularRecipes.adapter = response.body()?.let { RecipeAdapter(meals) }
+                    }
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<Map<String, List<Recipe>>>, t: Throwable) {
+                // TODO: Need to make the error handling
+                Log.e("HomeActivity", "Error:${t.message}")
+            }
+        })
+
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
 
+        // TODO: MOVE INTO ANOTHER FILE
         // Items Selection Handler
         binding.bnMenu.setOnItemSelectedListener { item ->
             when (item.itemId) {
