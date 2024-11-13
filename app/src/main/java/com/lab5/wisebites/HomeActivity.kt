@@ -10,6 +10,8 @@ import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivityHomeBinding
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
+import com.lab5.wisebites.adapter.CategoriesAdapter
+import com.lab5.wisebites.model.Category
 import com.lab5.wisebites.utils.BottomNavigationHandler
 import com.lab5.wisebites.utils.SortModalBottomSheetDialog
 
@@ -29,12 +31,14 @@ class HomeActivity : AppCompatActivity() {
             sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
         }
 
+        // Logic dari Categories Recycler View
+        categoriesRecyclerViewHandler()
+
         // Logic Recycler View dari populer Recipes
         fetchMultipleRecipes()
 
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
-
         // Items Selection Handler
         BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
     }
@@ -43,6 +47,12 @@ class HomeActivity : AppCompatActivity() {
         super.onRestart()
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
+    }
+
+
+    private fun categoriesRecyclerViewHandler() {
+        val categoriesAdapter = CategoriesAdapter(Category.categoriesList)
+        binding.rvCategories.adapter = categoriesAdapter
     }
 
     private fun fetchMultipleRecipes() {

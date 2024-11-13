@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/btn_category"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="8dp"
+    android:layout_marginEnd="10dp"
+    app:cornerRadius="10dp"
+    app:icon="@drawable/ic_beef"
+    app:iconPadding="10dp"
+    app:iconGravity="textStart"
+    android:backgroundTint="@color/tertiary"
+    android:textColor="@color/white"
+    android:textSize="11sp"
+    android:fontFamily="@font/poppins_medium"
+    android:text="@string/recipe_tag"/>

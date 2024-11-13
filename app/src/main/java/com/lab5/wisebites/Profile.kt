@@ -3,8 +3,6 @@ package com.lab5.wisebites
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.lab5.wisebites.databinding.ActivityProfileBinding
 import com.lab5.wisebites.utils.BottomNavigationHandler
 
