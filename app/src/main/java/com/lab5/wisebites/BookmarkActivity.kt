@@ -1,10 +1,11 @@
 package com.lab5.wisebites
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.lab5.wisebites.databinding.ActivityBookmarkBinding
+import com.lab5.wisebites.utils.BottomNavigationHandler
+import com.lab5.wisebites.utils.SortModalBottomSheetDialog
 
 class BookmarkActivity : AppCompatActivity() {
 
@@ -26,33 +27,7 @@ class BookmarkActivity : AppCompatActivity() {
         binding.bnMenu.selectedItemId = R.id.i_bookmark
 
         // Items Selection Handler
-        binding.bnMenu.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.i_home -> {
-                    intent = Intent(this, HomeActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    true
-                }
-                R.id.i_search -> {
-                    intent = Intent(this, SearchActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    true
-                }
-                R.id.i_bookmark -> {
-                    intent = Intent(this, BookmarkActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    true
-                }
-                R.id.i_profile -> {
-                    // startActivity(Intent(this, ProfileActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
+        BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
     }
 
     override fun onRestart() {

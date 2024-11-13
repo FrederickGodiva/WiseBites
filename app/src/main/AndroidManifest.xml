@@ -36,6 +36,12 @@
             android:name=".RecipeActivity"
             android:exported="true" />
         <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="true" />
+        <activity
             android:name=".OnBoarding1Activity"
             android:exported="false" />
         <activity
@@ -49,7 +55,7 @@
             android:exported="true" />
         <activity
             android:name=".OnBoarding5"
-            android:exported="false" />
+            android:exported="true" />
     </application>
 
 </manifest>

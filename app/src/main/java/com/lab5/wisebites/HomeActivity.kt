@@ -1,6 +1,5 @@
 package com.lab5.wisebites
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +10,8 @@ import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivityHomeBinding
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
+import com.lab5.wisebites.utils.BottomNavigationHandler
+import com.lab5.wisebites.utils.SortModalBottomSheetDialog
 
 class HomeActivity : AppCompatActivity() {
 
@@ -34,35 +35,8 @@ class HomeActivity : AppCompatActivity() {
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
 
-        // TODO: MOVE INTO ANOTHER FILE
         // Items Selection Handler
-        binding.bnMenu.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.i_home -> {
-                    intent = Intent(this, HomeActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    true
-                }
-                R.id.i_search -> {
-                     intent = Intent(this, SearchActivity::class.java)
-                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                     startActivity(intent)
-                    true
-                }
-                R.id.i_bookmark -> {
-                    intent = Intent(this, BookmarkActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    true
-                }
-                R.id.i_profile -> {
-                    // startActivity(Intent(this, ProfileActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
+        BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
     }
 
     override fun onRestart() {
