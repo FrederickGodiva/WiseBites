@@ -39,7 +39,7 @@
     <string name="search_placeholder">Search recipes</string>
     <string name="choose_ingredients">Choose your\'s categories</string>
     <string name="select_ingredients">Select Categories</string>
-    <string name="select_ingredients_subtext">Choose 1 to 3 categories to discover new cooking ideas</string>
+    <string name="select_ingredients_subtext">Choose 1 category to discover new cooking ideas</string>
     <string name="choose_popular_recipe">Choose from popular recipe</string>
     <string name="sortBtn">Sort By</string>
     <string name="recipe_name">Lamb Tzatziki Burgers</string>
