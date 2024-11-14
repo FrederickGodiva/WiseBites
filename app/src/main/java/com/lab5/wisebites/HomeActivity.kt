@@ -14,13 +14,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.lab5.wisebites.adapter.CategoriesAdapter
 import com.lab5.wisebites.model.Category
+import com.lab5.wisebites.model.Recipe
 import com.lab5.wisebites.utils.BottomNavigationHandler
+import com.lab5.wisebites.utils.SortHandler
 import com.lab5.wisebites.utils.SortModalBottomSheetDialog
+import com.lab5.wisebites.utils.SortOptionListener
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityHomeBinding
     private lateinit var apiService: APIService
+    private lateinit var recipeList: MutableList<Recipe>
+    private var lastSelectedSortOption: String = "Recipe A to Z"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +37,12 @@ class HomeActivity : AppCompatActivity() {
         apiService = APIClient.instance.create(APIService::class.java)
 
         binding.btnSort.setOnClickListener() {
-            val sortModalBottomSheet = SortModalBottomSheetDialog()
+            val sortModalBottomSheet = SortModalBottomSheetDialog(lastSelectedSortOption, object: SortOptionListener {
+                override fun onSortOptionSelected(option: String) {
+                    lastSelectedSortOption = option
+                    sortRecipes(option)
+                }
+            })
             sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
         }
 
@@ -101,19 +111,31 @@ class HomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 // Call API 10 times with paralelism
-                val recipesList = withContext(Dispatchers.IO) {
+                recipeList = withContext(Dispatchers.IO) {
                     (1..10).map {
                         async { apiService.getRandomRecipe()["meals"]?.firstOrNull() }
                     }.awaitAll()
-                }.filterNotNull()
+                }.filterNotNull().toMutableList()
 
-                // Show result to RecyclerView
-                if (recipesList.isNotEmpty()) {
-                    binding.rvPopularRecipes.adapter = RecipeAdapter(recipesList)
-                }
+                displayRecipes(recipeList)
             } catch (e: Exception) {
                 Log.e("HomeActivity", "Error: ${e.message}")
             }
+        }
+    }
+
+    private fun displayRecipes(recipe: List<Recipe>) {
+        if(recipe.isNotEmpty()){
+            binding.rvPopularRecipes.adapter = RecipeAdapter(recipe)
+        }
+    }
+
+    private fun sortRecipes(option: String) {
+        if (option.isNotEmpty()) {
+            recipeList = SortHandler.sortRecipes(recipeList, option).toMutableList()
+            displayRecipes(recipeList)
+        } else {
+            Log.e("HomeActivity", "Received empty sort option")
         }
     }
 }
