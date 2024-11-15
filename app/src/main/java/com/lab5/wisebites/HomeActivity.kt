@@ -96,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
                 val response = apiService.getRecipesByCategory(category)
                 val recipesList = response["meals"] ?: emptyList()
                 if (recipesList.isNotEmpty()) {
-                    binding.rvFilteredRecipes.adapter = RecipeAdapter(recipesList)
+                    binding.rvFilteredRecipes.adapter = RecipeAdapter(this@HomeActivity, recipesList)
                 } else{
                     showEmptyState()
                 }
@@ -126,7 +126,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun displayRecipes(recipe: List<Recipe>) {
         if(recipe.isNotEmpty()){
-            binding.rvPopularRecipes.adapter = RecipeAdapter(recipe)
+            binding.rvPopularRecipes.adapter = RecipeAdapter(this@HomeActivity, recipe)
         }
     }
 
