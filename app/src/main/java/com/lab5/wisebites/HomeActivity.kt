@@ -95,8 +95,22 @@ class HomeActivity : AppCompatActivity() {
             try{
                 val response = apiService.getRecipesByCategory(category)
                 val recipesList = response["meals"] ?: emptyList()
+
                 if (recipesList.isNotEmpty()) {
-                    binding.rvFilteredRecipes.adapter = RecipeAdapter(this@HomeActivity, recipesList)
+                    val detailedRecipes = withContext(Dispatchers.IO) {
+                        recipesList.map { recipe ->
+                            async {
+                                val detailedRecipe = apiService.getRecipeById(recipe.idMeal)
+                                detailedRecipe["meals"]?.firstOrNull()
+                            }
+                        }.awaitAll()
+                    }.filterNotNull()
+
+                    if (detailedRecipes.isNotEmpty()) {
+                        binding.rvFilteredRecipes.adapter = RecipeAdapter(this@HomeActivity, detailedRecipes)
+                    } else {
+                        showEmptyState()
+                    }
                 } else{
                     showEmptyState()
                 }
