@@ -15,7 +15,7 @@ import com.lab5.wisebites.model.Recipe
 
 class RecipeAdapter(
     private val context: Context,
-    private val recipes: List<Recipe>
+    private val recipes: MutableList<Recipe>
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> (){
     inner class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val recipeName: TextView = view.findViewById(R.id.tv_recipe_name)
@@ -48,4 +48,10 @@ class RecipeAdapter(
     }
 
     override fun getItemCount(): Int = recipes.size
+
+    fun updateRecipes(newRecipes: List<Recipe>) {
+        recipes.clear()
+        recipes.addAll(newRecipes)
+        notifyDataSetChanged()
+    }
 }

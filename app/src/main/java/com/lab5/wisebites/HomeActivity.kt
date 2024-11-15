@@ -107,7 +107,10 @@ class HomeActivity : AppCompatActivity() {
                     }.filterNotNull()
 
                     if (detailedRecipes.isNotEmpty()) {
-                        binding.rvFilteredRecipes.adapter = RecipeAdapter(this@HomeActivity, detailedRecipes)
+                        binding.rvFilteredRecipes.adapter = RecipeAdapter(
+                            this@HomeActivity,
+                            detailedRecipes.toMutableList()
+                        )
                     } else {
                         showEmptyState()
                     }
@@ -140,7 +143,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun displayRecipes(recipe: List<Recipe>) {
         if(recipe.isNotEmpty()){
-            binding.rvPopularRecipes.adapter = RecipeAdapter(this@HomeActivity, recipe)
+            binding.rvPopularRecipes.adapter = RecipeAdapter(
+                this@HomeActivity,
+                recipe.toMutableList()
+            )
         }
     }
 

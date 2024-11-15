@@ -12,4 +12,7 @@ interface APIService {
 
     @GET("lookup.php")
     suspend fun getRecipeById(@retrofit2.http.Query("i") id: Int): Map<String, List<Recipe>>
+
+    @GET("search.php")
+    suspend fun getRecipeByName(@retrofit2.http.Query("s") name: String): Map<String, List<Recipe>>
 }
