@@ -1,5 +1,6 @@
 package com.lab5.wisebites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,10 @@ class Profile : AppCompatActivity() {
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnEditProfile.setOnClickListener {
+            startActivity(Intent(this, EditProfile::class.java))
+        }
 
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_profile
