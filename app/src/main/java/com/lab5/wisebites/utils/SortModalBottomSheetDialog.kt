@@ -1,4 +1,4 @@
-package com.lab5.wisebites
+package com.lab5.wisebites.utils
 
 import android.os.Bundle
 import android.view.LayoutInflater
