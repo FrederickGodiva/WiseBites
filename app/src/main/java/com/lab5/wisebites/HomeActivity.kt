@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.lab5.wisebites.API.APIClient
 import com.lab5.wisebites.API.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
@@ -16,6 +17,7 @@ import com.lab5.wisebites.adapter.CategoriesAdapter
 import com.lab5.wisebites.model.Category
 import com.lab5.wisebites.model.Recipe
 import com.lab5.wisebites.utils.BottomNavigationHandler
+import com.lab5.wisebites.utils.SearchHandler
 import com.lab5.wisebites.utils.SortHandler
 import com.lab5.wisebites.utils.SortModalBottomSheetDialog
 import com.lab5.wisebites.utils.SortOptionListener
@@ -25,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding:ActivityHomeBinding
     private lateinit var apiService: APIService
     private lateinit var recipeList: MutableList<Recipe>
+    private lateinit var recipeAdapter: RecipeAdapter
     private var lastSelectedSortOption: String = "Recipe A to Z"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +38,36 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         apiService = APIClient.instance.create(APIService::class.java)
+        SearchHandler.initApiService()
+
+        binding.cvSearchView.setOnClickListener {
+            binding.searchView.requestFocus()
+            binding.searchView.isIconified = false
+        }
+
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                binding.searchView.isIconified = true
+
+                query?.let {
+                    searchRecipes(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    if (it.isNotEmpty()) {
+                        searchRecipes(it)
+                    } else {
+                        // Reset to original list if query is empty
+                        displayRecipes(recipeList)
+                    }
+                }
+                return true
+            }
+        })
 
         binding.btnSort.setOnClickListener() {
             val sortModalBottomSheet = SortModalBottomSheetDialog(lastSelectedSortOption, object: SortOptionListener {
@@ -65,6 +98,12 @@ class HomeActivity : AppCompatActivity() {
         binding.bnMenu.selectedItemId = R.id.i_home
     }
 
+
+    private fun searchRecipes(query: String) {
+        recipeAdapter = RecipeAdapter(this, recipeList)
+        binding.rvPopularRecipes.adapter = recipeAdapter
+        SearchHandler.searchRecipeByName(query, this@HomeActivity, recipeAdapter)
+    }
 
     private fun categoriesRecyclerViewHandler() {
         val categoriesAdapter = CategoriesAdapter(Category.categoriesList) { category ->

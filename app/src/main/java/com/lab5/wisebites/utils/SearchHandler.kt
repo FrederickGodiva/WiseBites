@@ -2,7 +2,6 @@ package com.lab5.wisebites.utils
 
 import android.content.Context
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import com.lab5.wisebites.API.APIClient
 import com.lab5.wisebites.API.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
@@ -15,17 +14,17 @@ object SearchHandler {
     private lateinit var apiService: APIService
 
     fun initApiService() {
-        apiService =APIClient.instance.create(APIService::class.java)
+        apiService = APIClient.instance.create(APIService::class.java)
     }
 
     fun searchRecipeByName(query: String, context: Context, adapter: RecipeAdapter) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = apiService.getRecipeByName(query)
+                val recipes = response["meals"]?: emptyList()
 
                 // Switch to Main thread to update the UI
                 withContext(Dispatchers.Main) {
-                    val recipes = response["meals"]?: emptyList()
                     adapter.updateRecipes(recipes)
                 }
             } catch (e: Exception) {
