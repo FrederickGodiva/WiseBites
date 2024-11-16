@@ -39,6 +39,7 @@ class SearchActivity : AppCompatActivity() {
         binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchView.setIconified(true)
+                binding.searchView.clearFocus()
 
                 // Submit the query when the user presses the enter key
                 query?.let {
@@ -65,7 +66,7 @@ class SearchActivity : AppCompatActivity() {
     private fun searchRecipes(query: String) {
         // Use lifecycleScope for proper coroutine handling inside the Activity
         lifecycleScope.launch(Dispatchers.Main) {
-            SearchHandler.searchRecipeByName(query, this@SearchActivity, binding.rvRecipesSearchResult, recipeAdapter)
+            SearchHandler.searchRecipeByName(query, this@SearchActivity, recipeAdapter)
         }
     }
 

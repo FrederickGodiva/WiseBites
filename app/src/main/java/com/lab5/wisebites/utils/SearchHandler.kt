@@ -18,7 +18,7 @@ object SearchHandler {
         apiService =APIClient.instance.create(APIService::class.java)
     }
 
-    fun searchRecipeByName(query: String, context: Context, recyclerView: RecyclerView, adapter: RecipeAdapter) {
+    fun searchRecipeByName(query: String, context: Context, adapter: RecipeAdapter) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = apiService.getRecipeByName(query)
