@@ -10,6 +10,7 @@
     <ImageView
         android:id="@+id/lisa_photo_profile"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:src="@drawable/ic_nigga"
@@ -26,7 +27,9 @@
         android:textColor="@color/primary"
         android:textAlignment="center"
         android:fontFamily="@font/poppins_medium"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <!--Edit Nama-->
     <com.google.android.material.textfield.TextInputLayout
@@ -74,6 +77,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
+            android:inputType="none"
+            android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/email"
@@ -81,106 +86,120 @@
             android:fontFamily="@font/poppins_medium"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        app:layout_constraintTop_toBottomOf="@id/edit_email"
-        app:layout_constraintStart_toStartOf="@id/edit_email"
-        app:layout_constraintEnd_toEndOf="@id/edit_email"/>
-
-    <!-- Old Password -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/oldPassword"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_email"
-        android:layout_marginTop="54dp"
         android:layout_marginHorizontal="24dp"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusTopStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxStrokeColor="@color/gray"
-        android:hint="@string/oldPassword_textInput"
-        app:hintEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/gray"
-        app:hintTextColor="@color/gray">
+        android:layout_marginTop="20dp"
+        android:text="@string/edit_password"
+        android:textAlignment="textEnd"
+        android:textSize="12sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/primary"
+        android:fontFamily="@font/poppins_medium"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:text="@string/profile_password"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- New Password -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/new_password"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/edit_password_field"
         android:layout_width="match_parent"
-        android:layout_height="59dp"
-        app:layout_constraintTop_toBottomOf="@+id/oldPassword"
-        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusTopStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxStrokeColor="@color/gray"
-        android:hint="@string/newPassword_textInput"
-        app:hintEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/gray"
-        app:hintTextColor="@color/gray">
+        app:layout_constraintTop_toBottomOf="@id/edit_password"
+        android:layout_marginTop="20dp"
+        android:visibility="gone">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/newPassword"
+        <!--Old Password-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/oldPassword"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:text="@string/new_password"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="59dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxStrokeColor="@color/gray"
+            android:hint="@string/oldPassword_textInput"
+            app:hintEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/gray"
+            app:hintTextColor="@color/gray">
 
-    <!-- Confirm Password -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        app:layout_constraintTop_toBottomOf="@+id/new_password"
-        android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="24dp"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusTopStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxStrokeColor="@color/gray"
-        android:hint="@string/confirmPassword_textInput"
-        app:hintEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/gray"
-        app:hintTextColor="@color/gray">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirmPassword"
+        <!-- New Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/new_password"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:text="@string/new_password"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="59dp"
+            app:layout_constraintTop_toBottomOf="@+id/oldPassword"
+            android:layout_marginTop="24dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxStrokeColor="@color/gray"
+            android:hint="@string/newPassword_textInput"
+            app:hintEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/gray"
+            app:hintTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Confirm Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            app:layout_constraintTop_toBottomOf="@+id/new_password"
+            android:layout_marginTop="24dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxStrokeColor="@color/gray"
+            android:hint="@string/confirmPassword_textInput"
+            app:hintEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/gray"
+            app:hintTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSaveChanges"
@@ -194,8 +213,9 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/primary"
         app:cornerRadius="10dp"
-        app:layout_constraintTop_toTopOf="@id/btnCancelChanges"
+        app:layout_constraintBottom_toTopOf="@id/bn_menu"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="24dp"/>
 
     <com.google.android.material.button.MaterialButton
@@ -212,8 +232,7 @@
         app:strokeWidth="1dp"
         app:strokeColor="@color/gray"
         app:cornerRadius="10dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintTop_toBottomOf="@id/confirm_password"
+        app:layout_constraintTop_toTopOf="@id/btnSaveChanges"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="24dp"/>
 

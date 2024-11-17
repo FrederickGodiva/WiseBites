@@ -22,6 +22,11 @@ class Profile : AppCompatActivity() {
             startActivity(Intent(this, EditProfile::class.java))
         }
 
+        binding.btnLogOut.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_profile
 
