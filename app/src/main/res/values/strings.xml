@@ -82,6 +82,7 @@
     <string name="btn_logOut">Log Out</string>
     <string name="btn_editProfile">Edit Profile</string>
     <string name="edit_photoProfile">edit your profile picture</string>
+    <string name="edit_password">edit your password</string>
     <string name="name_textInput">Name</string>
     <string name="email_textInput">Email</string>
     <string name="oldPassword_textInput">Old Password</string>

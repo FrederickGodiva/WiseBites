@@ -1,5 +1,6 @@
 package com.lab5.wisebites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,16 @@ class Profile : AppCompatActivity() {
 
         // Items Selection Handler
         BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
+
+        binding.btnEditProfile.setOnClickListener{
+            val intent = Intent(this, EditProfile::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnLogOut.setOnClickListener{
+            val intent = Intent(this, OnBoarding3::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onRestart() {
