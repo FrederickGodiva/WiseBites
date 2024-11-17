@@ -15,7 +15,7 @@ import com.lab5.wisebites.utils.BottomNavigationHandler
 
 class EditProfile : AppCompatActivity() {
 
-    private lateinit var binding: ActivityEditProfileBinding;
+    private lateinit var binding: ActivityEditProfileBinding
     private val PICK_IMAGE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
