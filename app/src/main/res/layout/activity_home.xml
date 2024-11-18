@@ -8,146 +8,178 @@
     android:background="@color/white"
     tools:context=".HomeActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_horizontal"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.0567"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.08029197" />
-
-    <TextView
-        android:id="@+id/tv_greetings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/greetings"
-        style="@style/greetings"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintTop_toTopOf="@id/guideline_horizontal"/>
-
-    <TextView
-        android:id="@+id/tv_home_heading"
-        android:layout_width="291dp"
-        android:layout_height="wrap_content"
-        android:text="@string/Home_heading"
-        style="@style/homeHeading"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@id/tv_greetings"/>
-
-    <ImageView
-        android:id="@+id/iv_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_nigga"
-        app:layout_constraintWidth="45dp"
-        app:layout_constraintHeight="45dp"
-        android:layout_marginEnd="23dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_home_heading"
-        app:layout_constraintBottom_toBottomOf="@id/tv_home_heading"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintBottom_toTopOf="@id/bn_menu">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="27dp"
-        android:layout_marginTop="22dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="7dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_home_heading"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:backgroundTint="@color/white"
-            app:queryHint="@string/search_placeholder"
-            android:layout_margin="1dp"
-            android:focusable="true"/>
-    </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/tv_choose_ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_ingredients"
-        style="@style/homeSubHeading"
-        android:layout_marginTop="36dp"
-        app:layout_constraintTop_toBottomOf="@id/cv_search_view"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="40dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_categories"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_categories"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_choose_ingredients"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.08029197" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_filtered_recipes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/filtered_recipes_bg"
-        app:layout_constraintHeight_min="220dp"
-        android:layout_marginTop="10dp"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/rv_categories"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintEnd_toEndOf="@id/cv_search_view"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_filter_empty"/>
+            <TextView
+                android:id="@+id/tv_greetings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greetings"
+                style="@style/greetings"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+                app:layout_constraintTop_toTopOf="@id/guideline_horizontal"/>
 
-    <TextView
-        android:id="@+id/tv_choose_popular_recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_popular_recipe"
-        style="@style/homeSubHeading"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/rv_filtered_recipes"
-        app:layout_constraintStart_toEndOf="@id/guideline_vertical"/>
+            <TextView
+                android:id="@+id/tv_home_heading"
+                android:layout_width="291dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Home_heading"
+                style="@style/homeHeading"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+                app:layout_constraintTop_toBottomOf="@id/tv_greetings"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_sort"
-        android:layout_width="65dp"
-        android:layout_height="30dp"
-        android:text="@string/sortBtn"
-        android:paddingHorizontal="10dp"
-        style="@style/btn2"
-        app:icon="@drawable/ic_dropdown"
-        android:layout_marginEnd="27dp"
-        app:layout_constraintTop_toTopOf="@id/tv_choose_popular_recipe"
-        app:layout_constraintBottom_toBottomOf="@id/tv_choose_popular_recipe"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_nigga"
+                app:layout_constraintWidth="45dp"
+                app:layout_constraintHeight="45dp"
+                android:layout_marginEnd="23dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_home_heading"
+                app:layout_constraintBottom_toBottomOf="@id/tv_home_heading"
+                tools:ignore="ContentDescription" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_popular_recipes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_choose_popular_recipe"
-        app:layout_constraintBottom_toTopOf="@id/bn_menu"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintEnd_toEndOf="@id/cv_search_view"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/item_recipes"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="27dp"
+                android:layout_marginTop="22dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="7dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_home_heading"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/white"
+                    app:queryHint="@string/search_placeholder"
+                    android:layout_margin="1dp"
+                    android:focusable="true"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_choose_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_ingredients"
+                style="@style/homeSubHeading"
+                android:layout_marginTop="36dp"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_view"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_categories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_categories"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_choose_ingredients"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_filtered_recipes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/filtered_recipes_bg"
+                app:layout_constraintHeight_min="220dp"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_categories"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+                app:layout_constraintEnd_toEndOf="@id/cv_search_view"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_filter_empty"/>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/cpi_filtered_recipes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@color/primary"
+                app:layout_constraintTop_toTopOf="@id/rv_filtered_recipes"
+                app:layout_constraintBottom_toBottomOf="@id/rv_filtered_recipes"
+                app:layout_constraintStart_toStartOf="@id/rv_filtered_recipes"
+                app:layout_constraintEnd_toEndOf="@id/rv_filtered_recipes"/>
+
+            <TextView
+                android:id="@+id/tv_choose_popular_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_popular_recipe"
+                style="@style/homeSubHeading"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_filtered_recipes"
+                app:layout_constraintStart_toEndOf="@id/guideline_vertical"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sort"
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:text="@string/sortBtn"
+                android:paddingHorizontal="10dp"
+                style="@style/btn2"
+                app:icon="@drawable/ic_dropdown"
+                android:layout_marginEnd="27dp"
+                app:layout_constraintTop_toTopOf="@id/tv_choose_popular_recipe"
+                app:layout_constraintBottom_toBottomOf="@id/tv_choose_popular_recipe"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_recipes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="50dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_choose_popular_recipe"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+                app:layout_constraintEnd_toEndOf="@id/cv_search_view"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:nestedScrollingEnabled="false"
+                app:spanCount="2"
+                tools:listitem="@layout/item_recipes"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bn_menu"

@@ -2,6 +2,7 @@ package com.lab5.wisebites
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -108,6 +109,7 @@ class HomeActivity : AppCompatActivity() {
     private fun categoriesRecyclerViewHandler() {
         val categoriesAdapter = CategoriesAdapter(Category.categoriesList) { category ->
             if (category != null) {
+                binding.rvFilteredRecipes.adapter = null
                 fetchRecipeByCategory(category)
             } else {
                 showEmptyState()
@@ -117,6 +119,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showEmptyState() {
+        binding.cpiFilteredRecipes.visibility = View.GONE
         binding.rvFilteredRecipes.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
                 val view = layoutInflater.inflate(R.layout.item_filter_empty, parent, false)
@@ -132,6 +135,8 @@ class HomeActivity : AppCompatActivity() {
     private fun fetchRecipeByCategory(category: String) {
         lifecycleScope.launch {
             try{
+                binding.cpiFilteredRecipes.visibility = View.VISIBLE
+
                 val response = apiService.getRecipesByCategory(category)
                 val recipesList = response["meals"] ?: emptyList()
 
@@ -158,6 +163,9 @@ class HomeActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 Log.e("HomeActivity", "Error fetching recipes: ${e.message}")
+            } finally {
+                // Hide the progress indicator once fetching is complete
+                binding.cpiFilteredRecipes.visibility = View.GONE
             }
         }
     }
