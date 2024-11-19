@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.lab5.wisebites.OnBoarding4
+import com.lab5.wisebites.OnBoarding5
 import com.lab5.wisebites.R
 
 class OnBoardingAdapter (
@@ -45,6 +46,17 @@ class OnBoardingAdapter (
                 isFocusable = true
                 setOnClickListener{
                     val intent = Intent(context, OnBoarding4::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(intent)
+                }
+            }
+
+            holder.itemView.findViewById<MaterialButton>(R.id.signUpEmail)?.apply {
+                isClickable = true
+                isFocusable = true
+                setOnClickListener{
+                    val intent = Intent(context, OnBoarding5::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     context.startActivity(intent)
                 }
             }

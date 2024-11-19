@@ -10,13 +10,12 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.lab5.wisebites.databinding.ActivityEditProfileBinding
+import com.lab5.wisebites.utils.BottomNavigationHandler
 
 class EditProfile : AppCompatActivity() {
 
-    private lateinit var binding: ActivityEditProfileBinding;
+    private lateinit var binding: ActivityEditProfileBinding
     private val PICK_IMAGE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,18 +25,11 @@ class EditProfile : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSaveChanges.setOnClickListener{
-            val intent = Intent(this, Profile::class.java)
-            startActivity(intent)
+            finish()
         }
 
-        binding.btnCancelChanges.setOnClickListener{
-            val intent = Intent(this, Profile::class.java)
-            startActivity(intent)
-        }
-
-        binding.editPhotoProfile.setOnClickListener{
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(intent, PICK_IMAGE)
+        binding.btnCancelChanges.setOnClickListener {
+            finish()
         }
 
         binding.editPassword.setOnClickListener{
@@ -45,8 +37,13 @@ class EditProfile : AppCompatActivity() {
             binding.editPasswordField.visibility = if (isVisible) View.GONE else View.VISIBLE
         }
 
+        binding.editPhotoProfile.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, PICK_IMAGE)
+        }
 
-//        BELOM SIAP - JANGAN DISENTUH
+
+        //        BELOM SIAP - JANGAN DISENTUH
 //        binding.confirmPassword.editText?.addTextChangedListener(object : TextWatcher) {
 //            override fun afterTextChanged(s: Editable?){
 //                validatePasswords()
@@ -61,11 +58,13 @@ class EditProfile : AppCompatActivity() {
 //            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 //        })
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding.bnMenu.selectedItemId = R.id.i_profile
+        BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        binding.bnMenu.selectedItemId = R.id.i_profile
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){

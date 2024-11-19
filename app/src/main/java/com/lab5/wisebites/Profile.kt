@@ -18,21 +18,20 @@ class Profile : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnEditProfile.setOnClickListener {
+            startActivity(Intent(this, EditProfile::class.java))
+        }
+
+        binding.btnLogOut.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_profile
 
         // Items Selection Handler
         BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
-
-        binding.btnEditProfile.setOnClickListener{
-            val intent = Intent(this, EditProfile::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnLogOut.setOnClickListener{
-            val intent = Intent(this, OnBoarding3::class.java)
-            startActivity(intent)
-        }
     }
 
     override fun onRestart() {

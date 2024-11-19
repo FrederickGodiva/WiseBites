@@ -2,9 +2,11 @@ package com.lab5.wisebites
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.lab5.wisebites.API.APIClient
 import com.lab5.wisebites.API.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
@@ -14,13 +16,20 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.lab5.wisebites.adapter.CategoriesAdapter
 import com.lab5.wisebites.model.Category
+import com.lab5.wisebites.model.Recipe
 import com.lab5.wisebites.utils.BottomNavigationHandler
+import com.lab5.wisebites.utils.SearchHandler
+import com.lab5.wisebites.utils.SortHandler
 import com.lab5.wisebites.utils.SortModalBottomSheetDialog
+import com.lab5.wisebites.utils.SortOptionListener
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityHomeBinding
     private lateinit var apiService: APIService
+    private lateinit var recipeList: MutableList<Recipe>
+    private lateinit var recipeAdapter: RecipeAdapter
+    private var lastSelectedSortOption: String = "Recipe A to Z"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +39,44 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         apiService = APIClient.instance.create(APIService::class.java)
+        SearchHandler.initApiService()
+
+        binding.cvSearchView.setOnClickListener {
+            binding.searchView.requestFocus()
+            binding.searchView.isIconified = false
+        }
+
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                binding.searchView.isIconified = true
+
+                query?.let {
+                    searchRecipes(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    if (it.isNotEmpty()) {
+                        searchRecipes(it)
+                    } else {
+                        // Reset to original list if query is empty
+                        displayRecipes(recipeList)
+                    }
+                }
+                return true
+            }
+        })
 
         binding.btnSort.setOnClickListener() {
-            val sortModalBottomSheet = SortModalBottomSheetDialog()
+            val sortModalBottomSheet = SortModalBottomSheetDialog(lastSelectedSortOption, object: SortOptionListener {
+                override fun onSortOptionSelected(option: String) {
+                    lastSelectedSortOption = option
+                    sortRecipes(option)
+                }
+            })
             sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
         }
 
@@ -56,9 +100,16 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
+    private fun searchRecipes(query: String) {
+        recipeAdapter = RecipeAdapter(this, recipeList)
+        binding.rvPopularRecipes.adapter = recipeAdapter
+        SearchHandler.searchRecipeByName(query, this@HomeActivity, recipeAdapter)
+    }
+
     private fun categoriesRecyclerViewHandler() {
         val categoriesAdapter = CategoriesAdapter(Category.categoriesList) { category ->
             if (category != null) {
+                binding.rvFilteredRecipes.adapter = null
                 fetchRecipeByCategory(category)
             } else {
                 showEmptyState()
@@ -68,6 +119,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showEmptyState() {
+        binding.cpiFilteredRecipes.visibility = View.GONE
         binding.rvFilteredRecipes.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
                 val view = layoutInflater.inflate(R.layout.item_filter_empty, parent, false)
@@ -83,15 +135,37 @@ class HomeActivity : AppCompatActivity() {
     private fun fetchRecipeByCategory(category: String) {
         lifecycleScope.launch {
             try{
+                binding.cpiFilteredRecipes.visibility = View.VISIBLE
+
                 val response = apiService.getRecipesByCategory(category)
                 val recipesList = response["meals"] ?: emptyList()
+
                 if (recipesList.isNotEmpty()) {
-                    binding.rvFilteredRecipes.adapter = RecipeAdapter(recipesList)
+                    val detailedRecipes = withContext(Dispatchers.IO) {
+                        recipesList.map { recipe ->
+                            async {
+                                val detailedRecipe = apiService.getRecipeById(recipe.idMeal)
+                                detailedRecipe["meals"]?.firstOrNull()
+                            }
+                        }.awaitAll()
+                    }.filterNotNull()
+
+                    if (detailedRecipes.isNotEmpty()) {
+                        binding.rvFilteredRecipes.adapter = RecipeAdapter(
+                            this@HomeActivity,
+                            detailedRecipes.toMutableList()
+                        )
+                    } else {
+                        showEmptyState()
+                    }
                 } else{
                     showEmptyState()
                 }
             } catch (e: Exception) {
                 Log.e("HomeActivity", "Error fetching recipes: ${e.message}")
+            } finally {
+                // Hide the progress indicator once fetching is complete
+                binding.cpiFilteredRecipes.visibility = View.GONE
             }
         }
     }
@@ -101,19 +175,34 @@ class HomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 // Call API 10 times with paralelism
-                val recipesList = withContext(Dispatchers.IO) {
+                recipeList = withContext(Dispatchers.IO) {
                     (1..10).map {
                         async { apiService.getRandomRecipe()["meals"]?.firstOrNull() }
                     }.awaitAll()
-                }.filterNotNull()
+                }.filterNotNull().toMutableList()
 
-                // Show result to RecyclerView
-                if (recipesList.isNotEmpty()) {
-                    binding.rvPopularRecipes.adapter = RecipeAdapter(recipesList)
-                }
+                displayRecipes(recipeList)
             } catch (e: Exception) {
                 Log.e("HomeActivity", "Error: ${e.message}")
             }
+        }
+    }
+
+    private fun displayRecipes(recipe: List<Recipe>) {
+        if(recipe.isNotEmpty()){
+            binding.rvPopularRecipes.adapter = RecipeAdapter(
+                this@HomeActivity,
+                recipe.toMutableList()
+            )
+        }
+    }
+
+    private fun sortRecipes(option: String) {
+        if (option.isNotEmpty()) {
+            recipeList = SortHandler.sortRecipes(recipeList, option).toMutableList()
+            displayRecipes(recipeList)
+        } else {
+            Log.e("HomeActivity", "Received empty sort option")
         }
     }
 }

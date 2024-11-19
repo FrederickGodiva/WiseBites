@@ -9,4 +9,10 @@ interface APIService {
 
     @GET("filter.php")
     suspend fun getRecipesByCategory(@retrofit2.http.Query("c") category: String): Map<String, List<Recipe>>
+
+    @GET("lookup.php")
+    suspend fun getRecipeById(@retrofit2.http.Query("i") id: Int): Map<String, List<Recipe>>
+
+    @GET("search.php")
+    suspend fun getRecipeByName(@retrofit2.http.Query("s") name: String): Map<String, List<Recipe>>
 }
