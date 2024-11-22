@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "584285672309-kiprn5gj19n6v0jeb72pnubpbel2a158.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lab5.wisebites",
+            "certificate_hash": "de4b30f2a6802b9b10ac0c021170abcdd37a1433"
+          }
+        },
+        {
           "client_id": "584285672309-p2lloecbnu8mh5dh24to0strgmiroc59.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
