@@ -51,7 +51,7 @@ class OnBoardingAdapter (
                 }
             }
 
-            holder.itemView.findViewById<MaterialButton>(R.id.tv_sign_up)?.apply {
+            holder.itemView.findViewById<MaterialButton>(R.id.btn_signup)?.apply {
                 isClickable = true
                 isFocusable = true
                 setOnClickListener{
