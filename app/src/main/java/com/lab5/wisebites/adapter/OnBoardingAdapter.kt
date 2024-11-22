@@ -41,7 +41,7 @@ class OnBoardingAdapter (
                 skipClickListener.onClicked()
             }
         } else if (position == 2) {
-            holder.itemView.findViewById<TextView>(R.id.signIn)?.apply {
+            holder.itemView.findViewById<TextView>(R.id.tv_sign_in)?.apply {
                 isClickable = true
                 isFocusable = true
                 setOnClickListener{
@@ -51,7 +51,7 @@ class OnBoardingAdapter (
                 }
             }
 
-            holder.itemView.findViewById<MaterialButton>(R.id.signUpEmail)?.apply {
+            holder.itemView.findViewById<MaterialButton>(R.id.tv_sign_up)?.apply {
                 isClickable = true
                 isFocusable = true
                 setOnClickListener{

@@ -1,5 +1,6 @@
 package com.lab5.wisebites
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,6 +15,7 @@ import com.lab5.wisebites.databinding.ActivityHomeBinding
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.lab5.wisebites.adapter.CategoriesAdapter
 import com.lab5.wisebites.model.Category
 import com.lab5.wisebites.model.Recipe
@@ -37,6 +39,14 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            startActivity(Intent(this, OnBoarding1Activity::class.java))
+            finish()
+        } else {
+            binding.tvGreetings.text = "Hello, ${user.displayName}"
+        }
 
         apiService = APIClient.instance.create(APIService::class.java)
         SearchHandler.initApiService()

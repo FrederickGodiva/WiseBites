@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.lab5.wisebites.databinding.ActivityProfileBinding
 import com.lab5.wisebites.utils.BottomNavigationHandler
 
@@ -18,13 +19,24 @@ class Profile : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+            binding.tvUsername.text = user.displayName
+            binding.tvEmail.text = user.email
+        }
+
         binding.btnEditProfile.setOnClickListener {
             startActivity(Intent(this, EditProfile::class.java))
         }
 
         binding.btnLogOut.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         // Set the default selected item in Navigation Menu
