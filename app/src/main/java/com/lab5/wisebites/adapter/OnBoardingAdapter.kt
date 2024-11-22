@@ -28,36 +28,40 @@ class OnBoardingAdapter (
 
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
         // Attach the skip button listener only on the first page
-        if (position == 0) {
-            holder.itemView.findViewById<TextView>(R.id.skipButton)?.apply {
-                isClickable = true
-                isFocusable = true
-                setOnClickListener {
+        when (position) {
+            0 -> {
+                holder.itemView.findViewById<TextView>(R.id.skipButton)?.apply {
+                    isClickable = true
+                    isFocusable = true
+                    setOnClickListener {
+                        skipClickListener.onClicked()
+                    }
+                }
+            }
+            1 -> {
+                holder.itemView.findViewById<MaterialButton>(R.id.getStartedButton)?.setOnClickListener{
                     skipClickListener.onClicked()
                 }
             }
-        } else if (position == 1) {
-            holder.itemView.findViewById<MaterialButton>(R.id.getStartedButton)?.setOnClickListener{
-                skipClickListener.onClicked()
-            }
-        } else if (position == 2) {
-            holder.itemView.findViewById<TextView>(R.id.tv_sign_in)?.apply {
-                isClickable = true
-                isFocusable = true
-                setOnClickListener{
-                    val intent = Intent(context, OnBoarding4::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(intent)
+            2 -> {
+                holder.itemView.findViewById<TextView>(R.id.tv_sign_in)?.apply {
+                    isClickable = true
+                    isFocusable = true
+                    setOnClickListener{
+                        val intent = Intent(context, OnBoarding4::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(intent)
+                    }
                 }
-            }
 
-            holder.itemView.findViewById<MaterialButton>(R.id.btn_signup)?.apply {
-                isClickable = true
-                isFocusable = true
-                setOnClickListener{
-                    val intent = Intent(context, OnBoarding5::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(intent)
+                holder.itemView.findViewById<MaterialButton>(R.id.btn_signup)?.apply {
+                    isClickable = true
+                    isFocusable = true
+                    setOnClickListener{
+                        val intent = Intent(context, OnBoarding5::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(intent)
+                    }
                 }
             }
         }
