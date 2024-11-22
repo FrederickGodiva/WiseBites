@@ -6,6 +6,15 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile =
+                file("D:\\USU\\Semester 5\\Praktikum Pemrograman Mobile\\UAS\\WiseBites\\keystore\\keystore.jks")
+            storePassword = "wisebites"
+            keyAlias = "wisebites"
+            keyPassword = "wisebites"
+        }
+    }
     namespace = "com.lab5.wisebites"
     compileSdk = 34
 
@@ -17,6 +26,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
@@ -47,7 +57,13 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
+    implementation(libs.androidx.credentials)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
