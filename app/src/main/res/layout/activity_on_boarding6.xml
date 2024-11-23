@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoarding5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_ellipse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ellipse_onboarding5"
+            android:contentDescription="@string/ellipse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_wisebites_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/wisebites_logo"
+            android:src="@drawable/wisebites_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="123dp"/>
+
+        <LinearLayout
+            android:id="@+id/linear_hello_there"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/iv_wisebites_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:id="@+id/tv_hello_there"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello"
+                style="@style/signUp.hello"/>
+
+            <TextView
+                android:id="@+id/tv_there"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/there"
+                style="@style/signUp.there" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_lets_reset_your_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Let_s_reset_your_password"
+            style="@style/signUpCreateAccount"
+            app:layout_constraintTop_toBottomOf="@+id/linear_hello_there"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_address"
+            style="@style/signInEmail"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/tv_lets_reset_your_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_resetPassword"
+            style="@style/signUpButton"
+            app:backgroundTintMode="src_over"
+            android:background="@drawable/login_btn"
+            app:backgroundTint="@color/primary"
+            app:layout_constraintTop_toBottomOf="@id/et_email"
+            app:layout_constraintStart_toStartOf="@+id/et_email"
+            app:layout_constraintEnd_toEndOf="@+id/et_email"
+            android:layout_marginTop="40dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

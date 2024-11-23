@@ -25,23 +25,35 @@ class OnBoarding4 : AppCompatActivity() {
         progressDialog.setTitle("Status...")
         progressDialog.setMessage("Please wait")
 
+        FirebaseAuth.getInstance().addAuthStateListener { auth ->
+            val user = auth.currentUser
+            if (user != null) {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
         binding.btnLogin.setOnClickListener {
             when {
                 binding.etEmail.text.toString().isEmpty() -> binding.etEmail.error =
                     "Please enter email"
-
                 binding.etPassword.text.toString().isEmpty() -> binding.etPassword.error =
                     "Please enter password"
-
                 else -> {
-                   val email = binding.etEmail.text.toString()
-                   val password = binding.etPassword.text.toString()
+                    val email = binding.etEmail.text.toString()
+                    val password = binding.etPassword.text.toString()
 
                     progressDialog.show()
 
                     login(email, password)
                 }
             }
+        }
+
+        binding.tvForgotPassword.setOnClickListener {
+            val intent = Intent(this, OnBoarding6::class.java)
+            startActivity(intent)
         }
 
         binding.tvSignUp.setOnClickListener {
