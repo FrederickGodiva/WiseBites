@@ -6,17 +6,8 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        getByName("debug") {
-            storeFile =
-                file("D:\\USU\\Semester 5\\Praktikum Pemrograman Mobile\\UAS\\WiseBites\\keystore\\keystore.jks")
-            storePassword = "wisebites"
-            keyAlias = "wisebites"
-            keyPassword = "wisebites"
-        }
-    }
     namespace = "com.lab5.wisebites"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.lab5.wisebites"

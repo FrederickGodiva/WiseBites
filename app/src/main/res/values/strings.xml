@@ -34,6 +34,7 @@
     <string name="there">There!</string>
     <string name="create_password">create password</string>
     <string name="confirm_password">confirm password</string>
+    <string name="Let_s_reset_your_password">Let\'s reset your password</string>
     <string name="greetings">Hello,</string>
     <string name="Home_heading">What do you want to cook Today?</string>
     <string name="search_placeholder">Search recipes</string>
@@ -91,6 +92,7 @@
     <string name="confirmPassword_textInput">Confirm Password</string>
     <string name="btn_saveChanges">Save Changes</string>
     <string name="btn_cancelChanges">Cancel</string>
+    <string name="btn_resetPassword">Reset</string>
     <string name="new_password">New Password</string>
     <string name="bento_illustration">Bento Illustration</string>
     <string name="profile_illustration">Profile Illustration</string>

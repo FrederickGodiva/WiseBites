@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "584285672309",
+    "project_id": "wisebites-mobile",
+    "storage_bucket": "wisebites-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584285672309:android:454c1f129ee848ba67f93c",
+        "android_client_info": {
+          "package_name": "com.lab5.wisebites"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584285672309-kiprn5gj19n6v0jeb72pnubpbel2a158.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lab5.wisebites",
+            "certificate_hash": "de4b30f2a6802b9b10ac0c021170abcdd37a1433"
+          }
+        },
+        {
+          "client_id": "584285672309-p2lloecbnu8mh5dh24to0strgmiroc59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lab5.wisebites",
+            "certificate_hash": "148bf724f81660254f09f9c3ea9d59e1b9fd920c"
+          }
+        },
+        {
+          "client_id": "584285672309-i6uj86ih1mebb1eob8defihb6clr8ng6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs1CHciQFvjeehOB5Ghkxo6VjtN8HL0xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584285672309-i6uj86ih1mebb1eob8defihb6clr8ng6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
