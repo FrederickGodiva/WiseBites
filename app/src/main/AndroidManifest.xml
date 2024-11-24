@@ -45,7 +45,8 @@
             android:exported="true" />
         <activity
             android:name=".Profile"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".EditProfile"
             android:exported="true" />

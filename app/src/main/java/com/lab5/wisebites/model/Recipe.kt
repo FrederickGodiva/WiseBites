@@ -51,4 +51,5 @@ data class Recipe(
     val strMeasure18: String?,
     val strMeasure19: String?,
     val strMeasure20: String?,
+    var isBookmarked: Boolean = false
 ):Parcelable
