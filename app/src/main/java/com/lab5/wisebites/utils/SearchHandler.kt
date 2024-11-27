@@ -2,8 +2,8 @@ package com.lab5.wisebites.utils
 
 import android.content.Context
 import android.widget.Toast
-import com.lab5.wisebites.API.APIClient
-import com.lab5.wisebites.API.APIService
+import com.lab5.wisebites.api.APIClient
+import com.lab5.wisebites.api.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

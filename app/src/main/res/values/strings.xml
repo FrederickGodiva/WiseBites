@@ -97,4 +97,8 @@
     <string name="bento_illustration">Bento Illustration</string>
     <string name="profile_illustration">Profile Illustration</string>
     <string name="user_profile_picture">User Profile Picture</string>
+    <string name="ellipse_lower">ellipse_lower</string>
+    <string name="ellipse_upper">ellipse_upper</string>
+    <string name="white_background">white_background</string>
+    <string name="sort_drawer_decoration">sort_drawer_decoration</string>
 </resources>
