@@ -1,4 +1,4 @@
-package com.lab5.wisebites.API
+package com.lab5.wisebites.a
 
 import com.lab5.wisebites.model.Recipe
 import retrofit2.http.GET

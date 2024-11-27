@@ -11,6 +11,7 @@
         android:id="@+id/iv_sort_decor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/sort_drawer_decoration"
         android:src="@drawable/sort_decoration"
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toTopOf="parent"

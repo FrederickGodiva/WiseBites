@@ -84,5 +84,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_location_icon"
             app:layout_constraintBottom_toBottomOf="@id/iv_location_icon"
             tools:ignore="ContentDescription"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

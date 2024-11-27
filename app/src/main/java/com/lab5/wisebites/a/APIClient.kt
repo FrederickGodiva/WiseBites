@@ -1,4 +1,4 @@
-package com.lab5.wisebites.API
+package com.lab5.wisebites.a
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
