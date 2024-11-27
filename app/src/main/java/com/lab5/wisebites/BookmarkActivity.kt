@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.lab5.wisebites.api.APIClient
@@ -15,6 +16,7 @@ import com.lab5.wisebites.databinding.ActivityBookmarkBinding
 import com.lab5.wisebites.model.Recipe
 import com.lab5.wisebites.repository.FirestoreRepository
 import com.lab5.wisebites.utils.BottomNavigationHandler
+import com.lab5.wisebites.utils.SearchHandler
 import com.lab5.wisebites.utils.SortModalBottomSheetDialog
 import com.lab5.wisebites.utils.SortOptionListener
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +32,7 @@ class BookmarkActivity : AppCompatActivity() {
     private lateinit var apiService: APIService
     private lateinit var recipeAdapter: RecipeAdapter
     private val repository = FirestoreRepository()
-    private var lastSelectedSortOption: String = "Recipe A to Z"
+    private var lastSelectedSortOption: String = ""
     private lateinit var recipeList: MutableList<Recipe>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +55,34 @@ class BookmarkActivity : AppCompatActivity() {
         lifecycleScope.launch {
             fetchRecipesbyBookmark()
         }
+
+        SearchHandler.initApiService()
+
+        binding.cvSearchView.setOnClickListener {
+            binding.searchView.requestFocus()
+            binding.searchView.isIconified = false
+        }
+
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.isIconified = true
+                binding.searchView.clearFocus()
+
+                // Submit the query when the user presses the enter key
+                query?.let {
+                    searchRecipes(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Submit the query as the user types
+                newText?.let {
+                    searchRecipes(it)
+                }
+                return true
+            }
+        })
 
         binding.btnSort.setOnClickListener {
             val sortModalBottomSheet = SortModalBottomSheetDialog(lastSelectedSortOption, object: SortOptionListener {
@@ -113,6 +143,20 @@ class BookmarkActivity : AppCompatActivity() {
             }
         } finally {
             binding.cpiBookmarkRecipes.visibility = View.GONE
+        }
+    }
+
+    private fun searchRecipes(query: String) {
+        val filteredList = if(query.isEmpty()){
+                recipeList.toList()
+            } else {
+                recipeList.filter { recipe ->
+                    recipe.strMeal.contains(query, ignoreCase = true)
+                }
+            }
+
+        if (::recipeAdapter.isInitialized) {
+            recipeAdapter.updateRecipes(filteredList)
         }
     }
 }

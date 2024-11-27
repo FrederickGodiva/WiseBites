@@ -16,7 +16,7 @@ import com.lab5.wisebites.model.Recipe
 
 class RecipeAdapter(
     private val context: Context,
-    private val recipes: MutableList<Recipe>,
+    private var recipes: List<Recipe>,
 //    private val onBookmarkClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> (){
     inner class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -63,8 +63,7 @@ class RecipeAdapter(
     override fun getItemCount(): Int = recipes.size
 
     fun updateRecipes(newRecipes: List<Recipe>) {
-        recipes.clear()
-        recipes.addAll(newRecipes)
+        recipes = newRecipes.toList()
         notifyDataSetChanged()
     }
 }
