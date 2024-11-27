@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.lab5.wisebites.api.APIClient
 import com.lab5.wisebites.api.APIService
@@ -48,6 +49,17 @@ class BookmarkActivity : AppCompatActivity() {
             finish()
         } else {
             binding.tvGreetings.text = "Hello, ${user.displayName}"
+            user.photoUrl?.let { photoUrl ->
+                Glide.with(this)
+                    .load(photoUrl)
+                    .circleCrop()
+                    .into(binding.ivAvatar)
+            } ?: run {
+                Glide.with(this)
+                    .load(R.drawable.ic_nigga)
+                    .circleCrop()
+                    .into(binding.ivAvatar)
+            }
         }
 
         apiService = APIClient.instance.create(APIService::class.java)

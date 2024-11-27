@@ -15,6 +15,7 @@ import com.lab5.wisebites.databinding.ActivityHomeBinding
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.lab5.wisebites.adapter.CategoriesAdapter
 import com.lab5.wisebites.model.Category
@@ -46,6 +47,17 @@ class HomeActivity : AppCompatActivity() {
             finish()
         } else {
             binding.tvGreetings.text = "Hello, ${user.displayName}"
+            user.photoUrl?.let { photoUrl ->
+                Glide.with(this)
+                    .load(photoUrl)
+                    .circleCrop()
+                    .into(binding.ivAvatar)
+            } ?: run {
+                Glide.with(this)
+                    .load(R.drawable.ic_nigga)
+                    .circleCrop()
+                    .into(binding.ivAvatar)
+            }
         }
 
         apiService = APIClient.instance.create(APIService::class.java)
