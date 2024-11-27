@@ -2,15 +2,14 @@ package com.lab5.wisebites
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
-import com.lab5.wisebites.API.APIClient
-import com.lab5.wisebites.API.APIService
+import com.lab5.wisebites.api.APIClient
+import com.lab5.wisebites.api.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivityBookmarkBinding
 import com.lab5.wisebites.model.Recipe
