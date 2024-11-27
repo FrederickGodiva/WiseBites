@@ -38,7 +38,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.searchView.setIconified(true)
+                binding.searchView.isIconified = true
                 binding.searchView.clearFocus()
 
                 // Submit the query when the user presses the enter key

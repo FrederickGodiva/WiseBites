@@ -184,7 +184,7 @@ class HomeActivity : AppCompatActivity() {
         // Use Coroutine in `lifecycleScope`
         lifecycleScope.launch {
             try {
-                // Call API 10 times with paralelism
+                // Call API 10 times with parallelism
                 recipeList = withContext(Dispatchers.IO) {
                     (1..10).map {
                         async { apiService.getRandomRecipe()["meals"]?.firstOrNull() }
