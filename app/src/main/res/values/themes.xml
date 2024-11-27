@@ -239,5 +239,9 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="searchViewHint">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="Theme.WiseBites" parent="Base.Theme.WiseBites" />
 </resources>
