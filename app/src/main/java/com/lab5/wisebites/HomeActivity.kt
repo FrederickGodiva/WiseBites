@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import com.lab5.wisebites.a.APIClient
-import com.lab5.wisebites.a.APIService
+import com.lab5.wisebites.api.APIClient
+import com.lab5.wisebites.api.APIService
 import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivityHomeBinding
 import kotlinx.coroutines.*
