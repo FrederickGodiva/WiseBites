@@ -184,6 +184,7 @@ class HomeActivity : AppCompatActivity() {
         // Use Coroutine in `lifecycleScope`
         lifecycleScope.launch {
             try {
+                binding.cpiPopularRecipes.visibility = View.VISIBLE
                 // Call API 10 times with paralelism
                 recipeList = withContext(Dispatchers.IO) {
                     (1..10).map {
@@ -194,6 +195,8 @@ class HomeActivity : AppCompatActivity() {
                 displayRecipes(recipeList)
             } catch (e: Exception) {
                 Log.e("HomeActivity", "Error: ${e.message}")
+            } finally {
+                binding.cpiPopularRecipes.visibility = View.GONE
             }
         }
     }

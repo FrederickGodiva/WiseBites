@@ -3,6 +3,7 @@ package com.lab5.wisebites
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -78,6 +79,7 @@ class BookmarkActivity : AppCompatActivity() {
 
     suspend fun fetchRecipesbyBookmark() {
         try {
+            binding.cpiBookmarkRecipes.visibility = View.VISIBLE
             val result = repository.getBookmarkIds()
             result.onSuccess { bookmarkIds ->
                 val bookmarkIdsAsInt = bookmarkIds.map { it.toInt() }
@@ -110,6 +112,8 @@ class BookmarkActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 Toast.makeText(this@BookmarkActivity, "Error fetching bookmarks: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+        } finally {
+            binding.cpiBookmarkRecipes.visibility = View.GONE
         }
     }
 }
