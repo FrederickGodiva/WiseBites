@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var apiService: APIService
     private lateinit var recipeList: MutableList<Recipe>
     private lateinit var recipeAdapter: RecipeAdapter
-    private var lastSelectedSortOption: String = "Recipe A to Z"
+    private var lastSelectedSortOption: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

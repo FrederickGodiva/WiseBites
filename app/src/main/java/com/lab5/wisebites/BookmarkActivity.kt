@@ -32,7 +32,7 @@ class BookmarkActivity : AppCompatActivity() {
     private lateinit var apiService: APIService
     private lateinit var recipeAdapter: RecipeAdapter
     private val repository = FirestoreRepository()
-    private var lastSelectedSortOption: String = "Recipe A to Z"
+    private var lastSelectedSortOption: String = ""
     private lateinit var recipeList: MutableList<Recipe>
 
     override fun onCreate(savedInstanceState: Bundle?) {
