@@ -1,10 +1,12 @@
 package com.lab5.wisebites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.auth.FirebaseAuth
 import com.lab5.wisebites.adapter.RecipeAdapter
 import com.lab5.wisebites.databinding.ActivitySearchBinding
 import com.lab5.wisebites.utils.BottomNavigationHandler
@@ -20,6 +22,12 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            startActivity(Intent(this, OnBoarding1Activity::class.java))
+            finish()
+        }
 
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)

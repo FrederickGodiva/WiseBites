@@ -87,10 +87,12 @@ class OnBoarding5 : AppCompatActivity() {
                             finish()
                         }
                 } else {
+                    progressDialog.dismiss()
                     Toast.makeText(this, it.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
+                progressDialog.dismiss()
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }
     }

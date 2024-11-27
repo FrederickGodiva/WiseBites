@@ -1,18 +1,24 @@
 package com.lab5.wisebites
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.lab5.wisebites.databinding.ActivityRecipeBinding
 import com.lab5.wisebites.model.Recipe
+import com.lab5.wisebites.repository.FirestoreRepository
 import com.lab5.wisebites.utils.BottomNavigationHandler
+import kotlinx.coroutines.launch
 
 class RecipeActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityRecipeBinding
+    private val repository = FirestoreRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +43,59 @@ class RecipeActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        lifecycleScope.launch {
+            val result = repository.getBookmarkIds()
+            result.onSuccess { bookmarkIds ->
+                val bookmarkIdsAsInt = bookmarkIds.map { it.toInt() }
+                if (recipe != null) {
+                    binding.btnBookmark.isSelected = bookmarkIdsAsInt.contains(recipe.idMeal)
+                }
+            }
+            result.onFailure { exception ->
+                Log.e("RecipeActivity", "Error fetching bookmark ids: ${exception.message}")
+            }
+        }
+
         binding.btnBookmark.setOnClickListener{
             binding.btnBookmark.isSelected = !binding.btnBookmark.isSelected
-            if (binding.btnBookmark.isSelected) {
-                // Code for when the bookmark is checked
-            } else {
-                // Code for when the bookmark is unchecked
+            lifecycleScope.launch {
+                if (binding.btnBookmark.isSelected) {
+                    if (recipe != null) {
+                        val result = repository.addBookmark(recipe.idMeal)
+                        if (result.isSuccess) {
+                            Toast.makeText(
+                                this@RecipeActivity,
+                                "Recipe added to bookmarks",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            val exception = result.exceptionOrNull()
+                            Toast.makeText(
+                                this@RecipeActivity,
+                                "Failed to bookmark recipe: ${exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                } else {
+                    if (recipe != null) {
+                        val result = repository.deleteBookmarkById(recipe.idMeal)
+                        if (result.isSuccess) {
+                            Toast.makeText(
+                                this@RecipeActivity,
+                                "Recipe removed from bookmarks",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                this@RecipeActivity,
+                                "Failed to remove bookmark",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    }
+                }
             }
         }
 
