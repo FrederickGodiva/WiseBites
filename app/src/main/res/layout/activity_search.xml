@@ -66,6 +66,19 @@
         app:spanCount="2"
         tools:listitem="@layout/item_recipes"/>
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpi_search_recipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/primary"
+        app:indicatorSize="65dp"
+        app:layout_constraintTop_toTopOf="@id/rv_recipes_search_result"
+        app:layout_constraintBottom_toBottomOf="@id/rv_recipes_search_result"
+        app:layout_constraintStart_toStartOf="@id/rv_recipes_search_result"
+        app:layout_constraintEnd_toEndOf="@id/rv_recipes_search_result"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bn_menu"
         android:layout_width="match_parent"
