@@ -2,23 +2,50 @@ package com.lab5.wisebites.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.lab5.wisebites.BookmarkActivity
 import com.lab5.wisebites.R
 import com.lab5.wisebites.RecipeActivity
 import com.lab5.wisebites.model.Recipe
+import com.lab5.wisebites.repository.FirestoreRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RecipeAdapter(
     private val context: Context,
     private var recipes: List<Recipe>,
-//    private val onBookmarkClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> (){
+    private val firestoreRepository = FirestoreRepository()
+    private var bookmarkedRecipeIds: List<Int> = emptyList()
+
+    init {
+        fetchBookmarkedRecipeIds()
+    }
+
+    private fun fetchBookmarkedRecipeIds() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val result = firestoreRepository.getBookmarkIds()
+            if (result.isSuccess) {
+                val bookmarkedRecipeIdsLong = result.getOrNull() ?: emptyList()
+                bookmarkedRecipeIds = bookmarkedRecipeIdsLong.map { it.toInt() }
+                notifyDataSetChanged()
+            } else {
+                val exception = result.exceptionOrNull()
+                Log.e("RecipeAdapter", "Error fetching bookmark ids: ${exception?.message}")
+            }
+        }
+    }
+
     inner class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val recipeName: TextView = view.findViewById(R.id.tv_recipe_name)
         private val recipeCategory: TextView = view.findViewById(R.id.tv_recipe_tags)
@@ -32,7 +59,7 @@ class RecipeAdapter(
             recipeArea.text = recipe.strArea
             Glide.with(itemView.context).load((recipe.strMealThumb)).into(recipeImage)
 
-            bookmarkButton.isSelected = recipe.isBookmarked
+            bookmarkButton.isSelected = bookmarkedRecipeIds.contains(recipe.idMeal)
 
             itemView.setOnClickListener {
                 val intent = Intent(context, RecipeActivity::class.java).apply {
@@ -42,11 +69,44 @@ class RecipeAdapter(
             }
 
             bookmarkButton.setOnClickListener {
-                recipe.isBookmarked = !recipe.isBookmarked
-                bookmarkButton.isSelected = recipe.isBookmarked
-                notifyItemChanged(adapterPosition)
-//                onBookmarkClick(recipe)
+                val isBookmarked = !bookmarkButton.isSelected
+                bookmarkButton.isSelected = isBookmarked
 
+                bookmarkedRecipeIds = if (isBookmarked) {
+                    bookmarkedRecipeIds + recipe.idMeal
+                } else {
+                    bookmarkedRecipeIds.filterNot { it == recipe.idMeal }
+                }
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    val result = if (isBookmarked) {
+                        firestoreRepository.addBookmark(recipe.idMeal)
+                    } else {
+                        firestoreRepository.deleteBookmarkById(recipe.idMeal)
+                    }
+
+                    if (result.isSuccess) {
+                        val message = if (isBookmarked) {
+                            "Recipe added to bookmarks"
+                        } else {
+                            "Recipe removed from bookmarks"
+                        }
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+
+                        (context as? BookmarkActivity)?.refreshBookmarkList()
+                    } else {
+                        val exception = result.exceptionOrNull()
+                        val errorMessage = if (isBookmarked) {
+                            "Failed to bookmark recipe: ${exception?.message}"
+                        } else {
+                            "Failed to remove bookmark: ${exception?.message}"
+                        }
+                        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+
+                        bookmarkButton.isSelected = !isBookmarked
+                        bookmarkedRecipeIds = bookmarkedRecipeIds.filterNot { it == recipe.idMeal }
+                    }
+                }
             }
         }
     }

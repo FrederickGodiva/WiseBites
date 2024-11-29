@@ -160,6 +160,13 @@ class BookmarkActivity : AppCompatActivity() {
         }
     }
 
+    fun refreshBookmarkList() {
+        binding.rvPopularRecipes.adapter = null
+        lifecycleScope.launch {
+            fetchRecipesbyBookmark()
+        }
+    }
+
     private fun searchRecipes(query: String) {
         val filteredList = if(query.isEmpty()){
             recipeList.toList()

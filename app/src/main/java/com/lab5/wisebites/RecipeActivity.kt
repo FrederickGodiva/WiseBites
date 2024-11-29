@@ -91,8 +91,7 @@ class RecipeActivity : AppCompatActivity() {
                                 this@RecipeActivity,
                                 "Failed to remove bookmark",
                                 Toast.LENGTH_SHORT
-                            )
-                                .show()
+                            ).show()
                         }
                     }
                 }
