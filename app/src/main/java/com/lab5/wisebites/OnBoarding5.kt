@@ -3,6 +3,7 @@ package com.lab5.wisebites
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,24 @@ class OnBoarding5 : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnBoarding5Binding
     private lateinit var progressDialog: ProgressDialog
+    private var emailVerificationHandler: Handler? = null
+    private val verificationCheckRunnable = object : Runnable {
+        override fun run() {
+            val firebaseUser = FirebaseAuth.getInstance().currentUser
+            firebaseUser?.reload()?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    if (firebaseUser.isEmailVerified) {
+                        emailVerificationHandler?.removeCallbacks(this)
+                        navigateToHome()
+                    } else {
+                        emailVerificationHandler?.postDelayed(this, 3000)
+                    }
+                } else {
+                    Toast.makeText(this@OnBoarding5, "Error checking email verification", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +78,6 @@ class OnBoarding5 : AppCompatActivity() {
                     }
 
                     progressDialog.show()
-
                     signUp(email, username, password)
                 }
             }
@@ -68,32 +86,64 @@ class OnBoarding5 : AppCompatActivity() {
 
     private fun signUp(email: String, username: String, password: String) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val firebaseUser = task.result!!.user!!
+
                     val userProfile = userProfileChangeRequest {
                         displayName = username
                     }
-                    val firebaseUser: FirebaseUser = it.result!!.user!!
-
-                    firebaseUser.updateProfile(userProfile)
-                        .addOnCompleteListener {
+                    firebaseUser.updateProfile(userProfile).addOnCompleteListener {
+                        firebaseUser.sendEmailVerification().addOnCompleteListener { emailTask ->
                             progressDialog.dismiss()
+                            if (emailTask.isSuccessful) {
+                                Toast.makeText(
+                                    this,
+                                    "Registration successful! A verification email has been sent to $email. Please verify your email to continue.",
+                                    Toast.LENGTH_LONG
+                                ).show()
 
-                            val intent = Intent(
-                                this,
-                                HomeActivity::class.java
-                            )
-                            startActivity(intent)
-                            finish()
+                                startEmailVerificationCheck(firebaseUser)
+                            } else {
+                                Toast.makeText(
+                                    this,
+                                    "Failed to send verification email: ${emailTask.exception?.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
+                    }
                 } else {
                     progressDialog.dismiss()
-                    Toast.makeText(this, it.exception!!.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun startEmailVerificationCheck(user: FirebaseUser) {
+        emailVerificationHandler = Handler()
+        emailVerificationHandler?.post(verificationCheckRunnable)
+    }
+
+    private fun stopEmailVerificationCheck() {
+        emailVerificationHandler?.removeCallbacks(verificationCheckRunnable)
+        emailVerificationHandler = null
+    }
+
+    private fun navigateToHome() {
+        Toast.makeText(this, "Email verified! Redirecting to home...", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopEmailVerificationCheck()
     }
 }
