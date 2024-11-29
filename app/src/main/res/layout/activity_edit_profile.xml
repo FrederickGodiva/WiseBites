@@ -17,28 +17,14 @@
         android:layout_marginTop="79dp"
         tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/edit_photo_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/lisa_photo_profile"
-        android:layout_marginTop="11dp"
-        android:text="@string/edit_photoProfile"
-        android:textColor="@color/primary"
-        android:textAlignment="center"
-        android:fontFamily="@font/poppins_medium"
-        android:textSize="12sp"
-        android:clickable="true"
-        android:focusable="true"/>
-
     <!--Edit Nama-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editname"
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:layout_marginHorizontal="24dp"
-        app:layout_constraintTop_toBottomOf="@id/edit_photo_profile"
-        android:layout_marginTop="51dp"
+        app:layout_constraintTop_toBottomOf="@id/lisa_photo_profile"
+        android:layout_marginTop="60dp"
         android:hint="@string/name_textInput"
         app:hintEnabled="true"
         app:hintTextColor="@color/gray"
