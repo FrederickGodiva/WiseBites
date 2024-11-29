@@ -2,6 +2,7 @@ package com.lab5.wisebites
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,7 @@ import com.lab5.wisebites.model.Recipe
 import com.lab5.wisebites.repository.FirestoreRepository
 import com.lab5.wisebites.utils.BottomNavigationHandler
 import com.lab5.wisebites.utils.SearchHandler
+import com.lab5.wisebites.utils.SortHandler
 import com.lab5.wisebites.utils.SortModalBottomSheetDialog
 import com.lab5.wisebites.utils.SortOptionListener
 import kotlinx.coroutines.Dispatchers
@@ -100,7 +102,7 @@ class BookmarkActivity : AppCompatActivity() {
             val sortModalBottomSheet = SortModalBottomSheetDialog(lastSelectedSortOption, object: SortOptionListener {
                 override fun onSortOptionSelected(option: String) {
                     lastSelectedSortOption = option
-                    // sortRecipes(option)
+                    sortRecipes(option)
                 }
             })
             sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
@@ -160,15 +162,26 @@ class BookmarkActivity : AppCompatActivity() {
 
     private fun searchRecipes(query: String) {
         val filteredList = if(query.isEmpty()){
-                recipeList.toList()
-            } else {
-                recipeList.filter { recipe ->
-                    recipe.strMeal.contains(query, ignoreCase = true)
-                }
+            recipeList.toList()
+        } else {
+            recipeList.filter { recipe ->
+                recipe.strMeal.contains(query, ignoreCase = true)
             }
+        }
 
         if (::recipeAdapter.isInitialized) {
             recipeAdapter.updateRecipes(filteredList)
+        }
+    }
+
+    private fun sortRecipes(option: String) {
+        if (option.isNotEmpty()) {
+            if (::recipeList.isInitialized) {
+                val sortedList = SortHandler.sortRecipes(recipeList, option)
+                recipeAdapter.updateRecipes(sortedList)
+            }
+        } else {
+            Log.e("BookmarkActivity", "Received empty sort option")
         }
     }
 }
