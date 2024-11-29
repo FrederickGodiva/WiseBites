@@ -102,22 +102,17 @@ class HomeActivity : AppCompatActivity() {
             sortModalBottomSheet.show(supportFragmentManager, sortModalBottomSheet.tag)
         }
 
-        // Categories Recycler View Logic
         categoriesRecyclerViewHandler()
         showEmptyState()
 
-        // Recycler View Logic of popular Recipes
         fetchMultipleRecipes()
 
-        // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
-        // Items Selection Handler
         BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
     }
 
     override fun onRestart() {
         super.onRestart()
-        // Set the default selected item in Navigation Menu
         binding.bnMenu.selectedItemId = R.id.i_home
     }
 
@@ -186,18 +181,15 @@ class HomeActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Log.e("HomeActivity", "Error fetching recipes: ${e.message}")
             } finally {
-                // Hide the progress indicator once fetching is complete
                 binding.cpiFilteredRecipes.visibility = View.GONE
             }
         }
     }
 
     private fun fetchMultipleRecipes() {
-        // Use Coroutine in `lifecycleScope`
         lifecycleScope.launch {
             try {
                 binding.cpiPopularRecipes.visibility = View.VISIBLE
-                // Call API 10 times with parallelism
                 recipeList = withContext(Dispatchers.IO) {
                     (1..10).map {
                         async { apiService.getRandomRecipe()["meals"]?.firstOrNull() }
