@@ -33,7 +33,7 @@ class RecipeActivity : AppCompatActivity() {
             binding.tvRecipeName.text = recipe.strMeal
             binding.tvRecipeTag.text = recipe.strCategory
             binding.tvStyle.text = recipe.strArea
-            binding.tvDirectionContent.text = formatInstructions(recipe.strInstructions)
+            binding.tvDirectionContent.text = recipe.strInstructions
 
             val ingredients = getIngredientsList(recipe)
             binding.tvIngredientsContent.text = ingredients.joinToString( "\n" )
@@ -130,17 +130,6 @@ class RecipeActivity : AppCompatActivity() {
 
         // Items Selection Handler
         BottomNavigationHandler.handleNavigation(this, binding.bnMenu)
-    }
-
-    private fun formatInstructions(instructions: String): String {
-        val instructionsList = instructions
-            .split(".")
-            .map { it.trim() }
-            .filter{ it.isNotEmpty() }
-
-        return instructionsList.mapIndexed { index, instruction ->
-            "${index + 1}. $instruction"
-        }.joinToString("\n")
     }
 
     private fun getIngredientsList(recipe: Recipe): List<String> {
