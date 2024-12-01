@@ -46,7 +46,7 @@ class RecipeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val result = repository.getBookmarkIds()
             result.onSuccess { bookmarkIds ->
-                val bookmarkIdsAsInt = bookmarkIds.map { it.toInt() }
+                val bookmarkIdsAsInt = bookmarkIds.map { it }
                 if (recipe != null) {
                     binding.btnBookmark.isSelected = bookmarkIdsAsInt.contains(recipe.idMeal)
                 }

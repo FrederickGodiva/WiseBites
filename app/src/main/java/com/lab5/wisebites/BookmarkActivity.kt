@@ -120,12 +120,12 @@ class BookmarkActivity : AppCompatActivity() {
         binding.bnMenu.selectedItemId = R.id.i_bookmark
     }
 
-    suspend fun fetchRecipesbyBookmark() {
+    private suspend fun fetchRecipesbyBookmark() {
         try {
             binding.cpiBookmarkRecipes.visibility = View.VISIBLE
             val result = repository.getBookmarkIds()
             result.onSuccess { bookmarkIds ->
-                val bookmarkIdsAsInt = bookmarkIds.map { it.toInt() }
+                val bookmarkIdsAsInt = bookmarkIds.map { it }
                 if (bookmarkIdsAsInt.isNotEmpty()) {
                     val recipes = coroutineScope {
                         bookmarkIdsAsInt.map { bookmarkId ->

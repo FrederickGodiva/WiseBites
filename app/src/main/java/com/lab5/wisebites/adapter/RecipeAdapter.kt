@@ -1,5 +1,6 @@
 package com.lab5.wisebites.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -32,12 +33,13 @@ class RecipeAdapter(
         fetchBookmarkedRecipeIds()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun fetchBookmarkedRecipeIds() {
         CoroutineScope(Dispatchers.Main).launch {
             val result = firestoreRepository.getBookmarkIds()
             if (result.isSuccess) {
                 val bookmarkedRecipeIdsLong = result.getOrNull() ?: emptyList()
-                bookmarkedRecipeIds = bookmarkedRecipeIdsLong.map { it.toInt() }
+                bookmarkedRecipeIds = bookmarkedRecipeIdsLong.map { it }
                 notifyDataSetChanged()
             } else {
                 val exception = result.exceptionOrNull()
@@ -122,6 +124,7 @@ class RecipeAdapter(
 
     override fun getItemCount(): Int = recipes.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateRecipes(newRecipes: List<Recipe>) {
         recipes = newRecipes.toList()
         notifyDataSetChanged()

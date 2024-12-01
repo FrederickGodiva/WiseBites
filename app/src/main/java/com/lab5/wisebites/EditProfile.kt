@@ -13,10 +13,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.lab5.wisebites.databinding.ActivityEditProfileBinding
 import com.lab5.wisebites.utils.BottomNavigationHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class EditProfile : AppCompatActivity() {
 
