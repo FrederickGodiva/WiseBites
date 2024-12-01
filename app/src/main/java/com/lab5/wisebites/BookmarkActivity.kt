@@ -120,7 +120,7 @@ class BookmarkActivity : AppCompatActivity() {
         binding.bnMenu.selectedItemId = R.id.i_bookmark
     }
 
-    suspend fun fetchRecipesbyBookmark() {
+    private suspend fun fetchRecipesbyBookmark() {
         try {
             binding.cpiBookmarkRecipes.visibility = View.VISIBLE
             val result = repository.getBookmarkIds()
