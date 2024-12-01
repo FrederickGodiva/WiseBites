@@ -39,7 +39,7 @@ class RecipeAdapter(
             val result = firestoreRepository.getBookmarkIds()
             if (result.isSuccess) {
                 val bookmarkedRecipeIdsLong = result.getOrNull() ?: emptyList()
-                bookmarkedRecipeIds = bookmarkedRecipeIdsLong.map { it }
+                bookmarkedRecipeIds = bookmarkedRecipeIdsLong.map { it.toInt() }
                 notifyDataSetChanged()
             } else {
                 val exception = result.exceptionOrNull()

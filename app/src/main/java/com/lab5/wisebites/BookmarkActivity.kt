@@ -125,7 +125,7 @@ class BookmarkActivity : AppCompatActivity() {
             binding.cpiBookmarkRecipes.visibility = View.VISIBLE
             val result = repository.getBookmarkIds()
             result.onSuccess { bookmarkIds ->
-                val bookmarkIdsAsInt = bookmarkIds.map { it }
+                val bookmarkIdsAsInt = bookmarkIds.map { it.toInt() }
                 if (bookmarkIdsAsInt.isNotEmpty()) {
                     val recipes = coroutineScope {
                         bookmarkIdsAsInt.map { bookmarkId ->
